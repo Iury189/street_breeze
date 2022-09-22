@@ -24,14 +24,14 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+                <x-input-label for="password" :value="__('Nova senha')" />
 
                 <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-input-label for="password_confirmation" :value="__('Confirmar nova senha')" />
 
                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                     type="password"
@@ -40,7 +40,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-primary-button>
-                    {{ __('Reset Password') }}
+                    {{ __('Confirmar nova senha') }}
                 </x-primary-button>
             </div>
         </form>
