@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
-use App\Enums\GeneroFighter;
+use App\Enums\Genero;
 
 class FighterRequest extends FormRequest
 {
@@ -29,7 +29,7 @@ class FighterRequest extends FormRequest
             'nome' => 'required|max:30',
             'arte_marcial' => 'required|max:50',
             'nacionalidade' => 'required|max:30',
-            'genero' => ['required', new Enum(GeneroFighter::class)],
+            'genero' => ['required', new Enum(Genero::class)],
             'altura' => 'required|numeric|min:1.50|max:2.00',
             'peso' => 'required|numeric|min:60.00|max:150.00',
         ];
@@ -37,7 +37,7 @@ class FighterRequest extends FormRequest
     // Mensagens personalizadas
     public function messages()
     {
-        return[
+        return [
             'nome.required' => 'É obrigatório definir o nome do Fighter.',
             'nome.max' => 'O nome do Fighter deve conter no máximo 30 caracteres.',
             'arte_marcial.required' => 'É obrigatório definir a arte marcial do Fighter.',

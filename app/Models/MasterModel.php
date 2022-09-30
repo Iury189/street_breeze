@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\Genero;
 
-class FighterModel extends Model
+class MasterModel extends Model
 {
     use HasFactory;
-    protected $table = 'fighter';
+    protected $table = 'master';
     protected $primary_key = 'id';
     public $timestamps = false;
     protected $fillable = [
@@ -19,6 +19,7 @@ class FighterModel extends Model
         'genero',
         'altura',
         'peso',
+        'id_fighter',
     ];
     protected $casts = [
         'genero' => Genero::class

@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          @if ($count_fighters <= 0)
-            {{ __('Não existem Fighters no BD.') }}
-          @elseif ($count_fighters == 1)
-            {{ __("Existe apenas $count_fighters Fighter no BD.") }}
-          @elseif ($count_fighters > 1)
-            {{ __("Existem $count_fighters Fighters no BD.") }}
+          @if ($count_masters <= 0)
+            {{ __('Não existem Masters no banco de dados.') }}
+          @elseif ($count_masters == 1)
+            {{ __("Existe apenas $count_masters Master no banco de dados.") }}
+          @elseif ($count_masters > 1)
+            {{ __("Existem $count_masters Masters no banco de dados.") }}
           @endif
         </h2>
           @if (Session::has('success-store'))
@@ -23,7 +23,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                   <nav class="navbar navbar-default">
                     <div class="container-fluid">
-                      <a href="{{ url("add-fighter") }}" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Cadastrar</a>
+                      <a href="{{ url("add-master") }}" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Cadastrar</a>
                     </div>
                   </nav>
                   <br>
@@ -37,32 +37,33 @@
                             <th title="Gênero">Gênero</th>
                             <th title="Altura">Altura</th>
                             <th title="Peso">Peso</th>
+                            <th title="ID Fighter">ID Fighter</th>
                             <th title="Ação(ões)">Ação(ões)</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($fighter as $sf)
+                          @foreach ($master as $msf)
                             <tr>
-                              <td title="{{ $sf->id }}"> {{ $sf->id }} </td>
-                              <td title="{{ $sf->nome }}"> {{ $sf->nome}} </td>  
-                              <td title="{{ $sf->arte_marcial }}"> {{ $sf->arte_marcial }} </td>  
-                              <td title="{{ $sf->nacionalidade }}"> {{ $sf->nacionalidade }} </td>  
-                              <td title="{{ $sf->genero->value }}"> {{ $sf->genero->value }} </td>
-                              <td title="{{ $sf->altura }} m"> {{ $sf->altura }} m</td>  
-                              <td title="{{ $sf->peso }} kg"> {{ $sf->peso }} kg</td>
+                              <td title="{{ $msf->id }}"> {{ $msf->id }} </td>
+                              <td title="{{ $msf->nome }}"> {{ $msf->nome}} </td>  
+                              <td title="{{ $msf->arte_marcial }}"> {{ $msf->arte_marcial }} </td>  
+                              <td title="{{ $msf->nacionalidade }}"> {{ $msf->nacionalidade }} </td>  
+                              <td title="{{ $msf->genero->value }}"> {{ $msf->genero->value }} </td>
+                              <td title="{{ $msf->altura }} m"> {{ $msf->altura }} m </td>  
+                              <td title="{{ $msf->peso }} kg"> {{ $msf->peso }} kg </td>
+                              <td title="{{ $msf->id_fighter }}"> {{ $msf->id_fighter }} </td>
                               <td>
-                                    <form action="{{ url("delete-fighter/$sf->id") }}" method="POST">
-                                      <a href="{{ url("update-fighter/$sf->id") }}" class="btn btn-primary" title="Atualizar {{ $sf->nome }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
-                                      @csrf @method('DELETE')
-                                      <x-primary-button class="ml-3" title="Deletar {{ $sf->nome }}"> {{ __('Deletar') }} </x-primary-button>  
-                                    </form>
+                                <form action="{{ url("delete-master/$msf->id") }}" method="POST">
+                                  <a href="{{ url("update-master/$msf->id") }}" class="btn btn-primary" title="Atualizar {{ $msf->nome }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
+                                  @csrf @method('DELETE')
+                                  <x-primary-button class="ml-3" title="Deletar {{ $msf->nome }}"> {{ __('Deletar') }} </x-primary-button>  
                                 </form>
                               </td>  
                             </tr>   
                           @endforeach
                         </tbody>
                       </table>
-                      {{ $fighter->links() }}
+                    {{ $master->links() }}
                 </div>
             </div>
         </div>

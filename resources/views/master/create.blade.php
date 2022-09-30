@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cadastrar Fighter') }}
+            {{ __('Cadastrar Master') }}
         </h2>
     </x-slot>
     <div class="py-12">   
@@ -10,13 +10,13 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
-                          <a href="{{ url("fighter") }}" class="btn btn-secondary float-end"><i class="fa fa-arrow-left"></i>&nbsp;Retornar listagem</a>
+                          <a href="{{ url("master") }}" class="btn btn-secondary float-end"><i class="fa fa-arrow-left"></i>&nbsp;Retornar listagem</a>
                         </div>
                     </nav>
                     <br>
                     <!-- Validation Errors -->
                     <x-validation-errors class="mb-4" :errors="$errors" />
-                    <form action="{{ url('add-fighter') }}" method="POST">
+                    <form action="{{ url('add-master') }}" method="POST">
                         @csrf 
                         <div>
                             <x-input-label for="nome" :value="__('Nome:')" />
@@ -72,6 +72,16 @@
                         <div>
                             <x-input-label for="peso" :value="__('Peso:')" />
                             <x-text-input id="peso" class="block mt-1 w-full" type="text" name="peso" :value="old('peso')" autofocus onkeypress="$(this).mask('000.00', {reverse: true});"/>
+                        </div>
+                        <br>
+                        <div>
+                            <x-input-label for="id_fighter" :value="__('Discípulo:')" />
+                            <x-select id="id_fighter" class="block w-full" name="id_fighter" autofocus>
+                                <option {{ old('id_fighter') == '' ? 'selected' : '' }} value="">{{ __('Escolha o discípulo') }}</option>
+                                @foreach($discipulos as $discipulo)
+                                    <option {{ old('id_fighter') == $discipulo->id ? 'selected' : '' }} value="{{ $discipulo->id }}">{{ $discipulo->nome }}</option>
+                                @endforeach
+                            </x-select>
                         </div>
                         <br>
                         <div>

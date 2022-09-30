@@ -4,6 +4,7 @@ namespace App\Http\Controller\FighController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FighterController;
+use App\Http\Controllers\MasterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +26,21 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::controller(FighterController::class)->group(function() {
-    Route::get('/index', 'index');
+    Route::get('/fighter', 'index');
     Route::get('/add-fighter', 'create');
     Route::post('/add-fighter', 'store');
     Route::get('/update-fighter/{id}', 'edit');
     Route::patch('/update-fighter/{id}', 'update');
     Route::delete('/delete-fighter/{id}', 'destroy');
+});
+
+Route::controller(MasterController::class)->group(function() {
+    Route::get('/master', 'index');
+    Route::get('/add-master', 'create');
+    Route::post('/add-master', 'store');
+    Route::get('/update-master/{id}', 'edit');
+    Route::patch('/update-master/{id}', 'update');
+    Route::delete('/delete-master/{id}', 'destroy');
 });
 
 // Route::prefix('fighter')->group(function() {

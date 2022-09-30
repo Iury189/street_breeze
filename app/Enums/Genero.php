@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum GeneroFighter : string
+enum Genero : string
 {
     case Masculino = 'Masculino';
     case Feminino = 'Feminino';

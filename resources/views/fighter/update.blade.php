@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Atualizar Fighter') }}
+            {{ __('Atualizar ')}} {{ $fighter->nome }}
         </h2>
     </x-slot>
     <div class="py-12">   
@@ -10,7 +10,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
-                          <a href="{{ url("index") }}" class="btn btn-secondary float-end"><i class="fa fa-arrow-left"></i>&nbsp;Retornar listagem</a>
+                          <a href="{{ url("fighter") }}" class="btn btn-secondary float-end"><i class="fa fa-arrow-left"></i>&nbsp;Retornar listagem</a>
                         </div>
                     </nav>
                     <br>
@@ -42,6 +42,7 @@
                                 <option {{ $fighter->nacionalidade == 'Espanha' ? 'selected' : '' }} value="Espanha">Espanha</option>
                                 <option {{ $fighter->nacionalidade == 'Estados Unidos' ? 'selected' : '' }} value="Estados Unidos">Estados Unidos</option>
                                 <option {{ $fighter->nacionalidade == 'França' ? 'selected' : '' }} value="França">França</option>
+                                <option {{ $fighter->nacionalidade == 'Grécia' ? 'selected' : '' }} value="Grécia">Grécia</option>
                                 <option {{ $fighter->nacionalidade == 'Índia' ? 'selected' : '' }} value="Índia">Índia</option>
                                 <option {{ $fighter->nacionalidade == 'Inglaterra' ? 'selected' : '' }} value="Inglaterra">Inglaterra</option>
                                 <option {{ $fighter->nacionalidade == 'Itália' ? 'selected' : '' }} value="Itália">Itália</option>

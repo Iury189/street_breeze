@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\FighterRequest;
+use App\Http\Requests\MasterRequest;
 use App\Models\FighterModel;
+use App\Models\MasterModel;
 
-class FighterController extends Controller
+class MasterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,10 @@ class FighterController extends Controller
      */
     public function index()
     {
-        $fighter = FighterModel::paginate(5);
-        $count_fighters = DB::table('fighter')->count();
-        return view('fighter.fighter', compact(['fighter','count_fighters']));
+        $master = MasterModel::paginate(5);
+        $discipulos = FighterModel::get(['id','nome']);
+        $count_masters = DB::table('master')->distinct()->count('nome');
+        return view('master.master', compact(['master','count_masters','discipulos']));
     }
 
     /**
@@ -28,7 +30,8 @@ class FighterController extends Controller
      */
     public function create()
     {
-        return view('fighter.create');
+        $discipulos = FighterModel::get(['id','nome']);
+        return view('master.create', compact('discipulos'));
     }
 
     /**
@@ -37,11 +40,11 @@ class FighterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FighterRequest $request)
+    public function store(MasterRequest $request)
     {
         $validacoes = $request->validated();
-        FighterModel::create($validacoes);
-        return redirect('fighter')->with('success-store','Fighter está presente no sistema.');  
+        MasterModel::create($validacoes);
+        return redirect('master')->with('success-store','Master está presente no sistema.');  
     }
 
     /**
@@ -52,7 +55,7 @@ class FighterController extends Controller
      */
     public function show($id)
     {
-        // 
+        
     }
 
     /**
@@ -63,8 +66,9 @@ class FighterController extends Controller
      */
     public function edit($id)
     {
-        $fighter = FighterModel::find($id);
-        return view('fighter.update', compact('fighter'));
+        $master = MasterModel::find($id);
+        $discipulos = FighterModel::get(['id','nome']);
+        return view('master.update', compact(['master','discipulos']));
     }
 
     /**
@@ -74,11 +78,11 @@ class FighterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FighterRequest $request, $id)
+    public function update(MasterRequest $request, $id)
     {
         $validacoes = $request->validated();
-        FighterModel::where('id',$id)->update($validacoes);
-        return redirect('fighter')->with('success-update','Fighter obteve atualizações em suas informações.');  
+        MasterModel::where('id',$id)->update($validacoes);
+        return redirect('master')->with('success-update','Master obteve atualizações em suas informações.');  
     }
 
     /**
@@ -89,7 +93,7 @@ class FighterController extends Controller
      */
     public function destroy($id)
     {
-        FighterModel::where('id',$id)->delete();
-        return redirect('fighter')->with('success-destroy','Fighter não está mais presente no sistema.');    
+        MasterModel::where('id',$id)->delete();
+        return redirect('master')->with('success-destroy','Master não está mais presente no sistema.');    
     }
 }
