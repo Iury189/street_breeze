@@ -18,9 +18,8 @@ class MasterController extends Controller
     public function index()
     {
         $master = MasterModel::paginate(5);
-        $discipulos = FighterModel::get(['id','nome']);
         $count_masters = DB::table('master')->distinct()->count('nome');
-        return view('master.master', compact(['master','count_masters','discipulos']));
+        return view('master.master', compact(['master','count_masters']));
     }
 
     /**

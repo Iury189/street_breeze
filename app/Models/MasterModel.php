@@ -24,4 +24,7 @@ class MasterModel extends Model
     protected $casts = [
         'genero' => Genero::class
     ];
+    public function fighter(){
+        return $this->hasMany(FighterModel::class,'id_fighter','id');
+    }
 }
