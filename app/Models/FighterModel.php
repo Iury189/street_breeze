@@ -9,18 +9,9 @@ use App\Enums\Genero;
 class FighterModel extends Model
 {
     use HasFactory;
-    protected $table = 'fighter';
-    protected $primary_key = 'id';
     public $timestamps = false;
-    protected $fillable = [
-        'nome',
-        'arte_marcial',
-        'nacionalidade',
-        'genero',
-        'altura',
-        'peso',
-    ];
-    protected $casts = [
-        'genero' => Genero::class
-    ];
+    protected $table = 'fighter';
+    protected $primaryKey = 'id';
+    protected $fillable = ['nome','arte_marcial','nacionalidade','genero','altura','peso'];
+    protected $casts = ['genero' => Genero::class];
 }
