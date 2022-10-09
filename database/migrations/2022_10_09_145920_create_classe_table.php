@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('master', function (Blueprint $table) {
+        Schema::create('classe', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 30);
-            $table->string('arte_marcial', 50);
-            $table->string('nacionalidade', 30);
-            $table->enum('genero', ['Masculino', 'Feminino']);
-            $table->decimal('altura', 3,2);
-            $table->decimal('peso', 5,2);
+            $table->foreignId('id_fighter')->constrained('fighter');
+            $table->foreignId('id_master')->constrained('master');
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master');
+        Schema::dropIfExists('classe');
     }
 };

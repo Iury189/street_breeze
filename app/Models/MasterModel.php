@@ -12,11 +12,6 @@ class MasterModel extends Model
     public $timestamps = false;
     protected $table = 'master';
     protected $primaryKey = 'id';
-    // protected $foreignKeys = ['fighter' => 'id_fighter'];
-    protected $fillable = ['nome','arte_marcial','nacionalidade','genero','altura','peso','id_fighter'];
+    protected $fillable = ['nome','arte_marcial','nacionalidade','genero','altura','peso'];
     protected $casts = ['genero' => Genero::class];
-
-    public function fighter(){
-        return $this->hasOne(FighterModel::class,'id','id_fighter');
-    }
 }

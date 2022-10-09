@@ -75,16 +75,6 @@
                         </div>
                         <br>
                         <div>
-                            <x-input-label for="id_fighter" :value="__('Discípulo:')" />
-                            <x-select id="id_fighter" class="block w-full" name="id_fighter" autofocus>
-                                <option {{ old('id_fighter') == '' ? 'selected' : '' }} value="">{{ __('Escolha o discípulo') }}</option>
-                                @foreach($discipulos as $discipulo)
-                                    <option {{ old('id_fighter') == $discipulo->id ? 'selected' : '' }} value="{{ $discipulo->id }}">{{ $discipulo->nome }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-                        <br>
-                        <div>
                             <x-primary-button class="ml-3"> {{ __('Cadastrar') }} </x-primary-button> 
                         </div>
                     </form>

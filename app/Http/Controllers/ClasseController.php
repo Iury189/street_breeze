@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\MasterRequest;
+use App\Http\Requests\ClasseRequest;
+use App\Models\ClasseModel;
+use App\Models\FighterModel;
 use App\Models\MasterModel;
 
-class MasterController extends Controller
+class ClasseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,9 @@ class MasterController extends Controller
      */
     public function index()
     {
-        $master = MasterModel::paginate(5);
-        $count_masters = DB::table('master')->distinct()->count('nome');
-        return view('master.master', compact(['master','count_masters']));
+        $classe = ClasseModel::paginate(5);
+        $count_classe = DB::table('classe')->distinct()->count('id');
+        return view('classe.classe', compact(['classe','count_classe']));
     }
 
     /**
@@ -28,7 +30,9 @@ class MasterController extends Controller
      */
     public function create()
     {
-        return view('master.create');
+        $fighter = FighterModel::get(['id','nome']);
+        $master = MasterModel::get(['id','nome']);
+        return view('classe.create', compact(['fighter','master']));
     }
 
     /**
@@ -37,11 +41,11 @@ class MasterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MasterRequest $request)
+    public function store(ClasseRequest $request)
     {
         $validacoes = $request->validated();
-        MasterModel::create($validacoes);
-        return redirect('master')->with('success-store','Master está presente no sistema.');  
+        ClasseModel::create($validacoes);
+        return redirect('classe')->with('success-store','Classe está presente no sistema.');  
     }
 
     /**
@@ -52,7 +56,7 @@ class MasterController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -63,8 +67,10 @@ class MasterController extends Controller
      */
     public function edit($id)
     {
-        $master = MasterModel::find($id);
-        return view('master.update', compact('master'));
+        $classe = ClasseModel::find($id);
+        $fighter = FighterModel::get(['id','nome']);
+        $master = MasterModel::get(['id','nome']);
+        return view('classe.update', compact(['classe','fighter','master']));
     }
 
     /**
@@ -74,11 +80,11 @@ class MasterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MasterRequest $request, $id)
+    public function update(ClasseRequest $request, $id)
     {
         $validacoes = $request->validated();
-        MasterModel::where('id',$id)->update($validacoes);
-        return redirect('master')->with('success-update','Master obteve atualizações em suas informações.');  
+        ClasseModel::where('id',$id)->update($validacoes);
+        return redirect('classe')->with('success-update','Classe obteve atualizações em suas informações.');  
     }
 
     /**
@@ -89,7 +95,7 @@ class MasterController extends Controller
      */
     public function destroy($id)
     {
-        MasterModel::where('id',$id)->delete();
-        return redirect('master')->with('success-destroy','Master não está mais presente no sistema.');    
+        ClasseModel::where('id',$id)->delete();
+        return redirect('classe')->with('success-destroy','Classe não está mais presente no sistema.');    
     }
 }

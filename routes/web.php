@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controller\FighController;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FighterController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\ClasseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +40,15 @@ Route::controller(MasterController::class)->group(function() {
     Route::get('/update-master/{id}', 'edit');
     Route::patch('/update-master/{id}', 'update');
     Route::delete('/delete-master/{id}', 'destroy');
+});
+
+Route::controller(ClasseController::class)->group(function() {
+    Route::get('/classe', 'index');
+    Route::get('/add-classe', 'create');
+    Route::post('/add-classe', 'store');
+    Route::get('/update-classe/{id}', 'edit');
+    Route::patch('/update-classe/{id}', 'update');
+    Route::delete('/delete-classe/{id}', 'destroy');
 });
 
 // Route::prefix('fighter')->group(function() {

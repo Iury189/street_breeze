@@ -32,7 +32,6 @@ class MasterRequest extends FormRequest
             'genero' => ['required', new Enum(Genero::class)],
             'altura' => 'required|numeric|min:1.50|max:2.00',
             'peso' => 'required|numeric|min:60.00|max:150.00',
-            'id_fighter' => 'required|integer|exists:fighter,id',
         ];
     }
     // Mensagens personalizadas
@@ -55,9 +54,6 @@ class MasterRequest extends FormRequest
             'peso.numeric' => 'O peso do Master precisa ser um valor numérico.',
             'peso.min' => 'O peso mínimo do Master deve ser de 60.00 kg.',
             'peso.max' => 'O peso máximo do Master deve ser de 150.00 kg.',
-            'id_fighter.required' => 'É obrigatório definir o discípulo do Master.',
-            'id_fighter.integer' => 'O ID do discípulo do Master precisa ser um valor inteiro.',
-            'id_fighter.exists' => 'O ID do discípulo do Master precisa existir no banco de dados.',
         ];
     }
 }

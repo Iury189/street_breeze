@@ -37,7 +37,6 @@
                             <th title="Gênero">Gênero</th>
                             <th title="Altura">Altura</th>
                             <th title="Peso">Peso</th>
-                            <th title="Discípulo">Discípulo</th>
                             <th title="Ação(ões)">Ação(ões)</th>
                           </tr>
                         </thead>
@@ -51,7 +50,6 @@
                               <td title="{{ $msf->genero->value }}"> {{ $msf->genero->value }} </td>
                               <td title="{{ $msf->altura }} m"> {{ $msf->altura }} m </td>  
                               <td title="{{ $msf->peso }} kg"> {{ $msf->peso }} kg </td>
-                              <td title="{{ $msf->id_fighter == $msf->fighter->id ? $msf->fighter->nome : '' }}"> {{ $msf->id_fighter == $msf->fighter->id ? $msf->fighter->nome : '' }} </td>
                               <td>
                                 <form action="{{ url("delete-master/$msf->id") }}" method="POST">
                                   <a href="{{ url("update-master/$msf->id") }}" class="btn btn-primary" title="Atualizar {{ $msf->nome }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
