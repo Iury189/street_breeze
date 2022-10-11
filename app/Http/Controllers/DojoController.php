@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\ClasseRequest;
-use App\Models\ClasseModel;
+use App\Http\Requests\DojoRequest;
+use App\Models\DojoModel;
 use App\Models\FighterModel;
 use App\Models\MasterModel;
 
-class ClasseController extends Controller
+class DojoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        $classe = ClasseModel::paginate(5);
-        $count_classe = DB::table('classe')->distinct()->count('id');
-        return view('classe.classe', compact(['classe','count_classe']));
+        $dojo = DojoModel::paginate(5);
+        $count_dojo = DB::table('dojo')->count('id');
+        return view('dojo.dojo', compact(['dojo','count_dojo']));
     }
 
     /**
@@ -32,7 +32,7 @@ class ClasseController extends Controller
     {
         $fighter = FighterModel::get(['id','nome']);
         $master = MasterModel::get(['id','nome']);
-        return view('classe.create', compact(['fighter','master']));
+        return view('dojo.create', compact(['fighter','master']));
     }
 
     /**
@@ -41,11 +41,11 @@ class ClasseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClasseRequest $request)
+    public function store(DojoRequest $request)
     {
         $validacoes = $request->validated();
-        ClasseModel::create($validacoes);
-        return redirect('classe')->with('success-store','Classe está presente no sistema.');  
+        DojoModel::create($validacoes);
+        return redirect('dojo')->with('success-store','Dojo está presente no sistema.');  
     }
 
     /**
@@ -67,10 +67,10 @@ class ClasseController extends Controller
      */
     public function edit($id)
     {
-        $classe = ClasseModel::find($id);
+        $dojo = DojoModel::find($id);
         $fighter = FighterModel::get(['id','nome']);
         $master = MasterModel::get(['id','nome']);
-        return view('classe.update', compact(['classe','fighter','master']));
+        return view('dojo.update', compact(['dojo','fighter','master']));
     }
 
     /**
@@ -80,11 +80,11 @@ class ClasseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ClasseRequest $request, $id)
+    public function update(DojoRequest $request, $id)
     {
         $validacoes = $request->validated();
-        ClasseModel::where('id',$id)->update($validacoes);
-        return redirect('classe')->with('success-update','Classe obteve atualizações em suas informações.');  
+        DojoModel::where('id',$id)->update($validacoes);
+        return redirect('dojo')->with('success-update','O dojo obteve atualizações em suas informações.');  
     }
 
     /**
@@ -95,7 +95,7 @@ class ClasseController extends Controller
      */
     public function destroy($id)
     {
-        ClasseModel::where('id',$id)->delete();
-        return redirect('classe')->with('success-destroy','Classe não está mais presente no sistema.');    
+        DojoModel::where('id',$id)->delete();
+        return redirect('dojo')->with('success-destroy','Dojo não está mais presente no sistema.');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FighterController;
 use App\Http\Controllers\MasterController;
-use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\DojoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,13 +42,13 @@ Route::controller(MasterController::class)->group(function() {
     Route::delete('/delete-master/{id}', 'destroy');
 });
 
-Route::controller(ClasseController::class)->group(function() {
-    Route::get('/classe', 'index');
-    Route::get('/add-classe', 'create');
-    Route::post('/add-classe', 'store');
-    Route::get('/update-classe/{id}', 'edit');
-    Route::patch('/update-classe/{id}', 'update');
-    Route::delete('/delete-classe/{id}', 'destroy');
+Route::controller(DojoController::class)->group(function() {
+    Route::get('/dojo', 'index');
+    Route::get('/add-dojo', 'create');
+    Route::post('/add-dojo', 'store');
+    Route::get('/update-dojo/{id}', 'edit');
+    Route::patch('/update-dojo/{id}', 'update');
+    Route::delete('/delete-dojo/{id}', 'destroy');
 });
 
 // Route::prefix('fighter')->group(function() {

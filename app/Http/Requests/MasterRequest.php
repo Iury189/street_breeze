@@ -30,8 +30,8 @@ class MasterRequest extends FormRequest
             'arte_marcial' => 'required|max:50',
             'nacionalidade' => 'required|max:30',
             'genero' => ['required', new Enum(Genero::class)],
-            'altura' => 'required|numeric|min:1.50|max:2.00',
-            'peso' => 'required|numeric|min:60.00|max:150.00',
+            'altura' => 'required|numeric|min:1.50|max:2.50',
+            'peso' => 'required|numeric|min:50.00|max:150.00',
         ];
     }
     // Mensagens personalizadas
@@ -49,10 +49,10 @@ class MasterRequest extends FormRequest
             'altura.required' => 'É obrigatório definir a altura do Master.',
             'altura.numeric' => 'A altura do Master precisa ser um valor numérico.',
             'altura.min' => 'A altura mínima do Master deve ser de 1.50 m.',
-            'altura.max' => 'A altura máxima do Master deve ser de 2.00 m',
+            'altura.max' => 'A altura máxima do Master deve ser de 2.50 m',
             'peso.required' => 'É obrigatório definir o peso do Master.',
             'peso.numeric' => 'O peso do Master precisa ser um valor numérico.',
-            'peso.min' => 'O peso mínimo do Master deve ser de 60.00 kg.',
+            'peso.min' => 'O peso mínimo do Master deve ser de 50.00 kg.',
             'peso.max' => 'O peso máximo do Master deve ser de 150.00 kg.',
         ];
     }

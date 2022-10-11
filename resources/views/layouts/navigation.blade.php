@@ -27,8 +27,8 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="url('classe')" :active="request()->routeIs('classe')">
-                        {{ __('Classe') }}
+                    <x-nav-link :href="url('dojo')" :active="request()->routeIs('dojo')">
+                        {{ __('Dojô') }}
                     </x-nav-link>
                 </div>
             </div>

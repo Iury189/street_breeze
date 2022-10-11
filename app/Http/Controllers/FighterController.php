@@ -17,8 +17,8 @@ class FighterController extends Controller
     public function index()
     {
         $fighter = FighterModel::paginate(5);
-        $count_fighters = DB::table('fighter')->count();
-        return view('fighter.fighter', compact(['fighter','count_fighters']));
+        $count_fighter = DB::table('fighter')->count();
+        return view('fighter.fighter', compact(['fighter','count_fighter']));
     }
 
     /**

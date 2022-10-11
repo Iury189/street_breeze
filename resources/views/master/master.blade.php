@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          @if ($count_masters <= 0)
+          @if ($count_master <= 0)
             {{ __('Não existem Masters no banco de dados.') }}
-          @elseif ($count_masters == 1)
-            {{ __("Existe apenas $count_masters Master no banco de dados.") }}
-          @elseif ($count_masters > 1)
-            {{ __("Existem $count_masters Masters no banco de dados.") }}
+          @elseif ($count_master == 1)
+            {{ __("Existe apenas $count_master Master no banco de dados.") }}
+          @elseif ($count_master > 1)
+            {{ __("Existem $count_master Masters no banco de dados.") }}
           @endif
         </h2>
           @if (Session::has('success-store'))
@@ -30,21 +30,21 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th title="ID">ID</th>
-                            <th title="Nome">Nome</th>
-                            <th title="Arte Marcial">Arte Marcial</th>
-                            <th title="Nacionalidade">Nacionalidade</th>
-                            <th title="Gênero">Gênero</th>
-                            <th title="Altura">Altura</th>
-                            <th title="Peso">Peso</th>
-                            <th title="Ação(ões)">Ação(ões)</th>
+                            <th title="ID"> ID </th>
+                            <th title="Nome"> Nome </th>
+                            <th title="Arte Marcial"> Arte Marcial </th>
+                            <th title="Nacionalidade"> Nacionalidade </th>
+                            <th title="Gênero"> Gênero </th>
+                            <th title="Altura"> Altura </th>
+                            <th title="Peso"> Peso </th>
+                            <th title="Ação(ões)"> Ação(ões) </th>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach ($master as $msf)
                             <tr>
                               <td title="{{ $msf->id }}"> {{ $msf->id }} </td>
-                              <td title="{{ $msf->nome }}"> {{ $msf->nome}} </td>  
+                              <td title="{{ $msf->nome }}"> {{ $msf->nome }} </td>  
                               <td title="{{ $msf->arte_marcial }}"> {{ $msf->arte_marcial }} </td>  
                               <td title="{{ $msf->nacionalidade }}"> {{ $msf->nacionalidade }} </td>  
                               <td title="{{ $msf->genero->value }}"> {{ $msf->genero->value }} </td>
