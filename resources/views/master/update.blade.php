@@ -40,7 +40,7 @@
                                 <option {{ $master->nacionalidade == 'Coréia do Sul' ? 'selected' : '' }} value="Coréia do Sul">Coréia do Sul</option>
                                 <option {{ $master->nacionalidade == 'Egito' ? 'selected' : '' }} value="Egito">Egito</option>
                                 <option {{ $master->nacionalidade == 'Espanha' ? 'selected' : '' }} value="Espanha">Espanha</option>
-                                <option {{ $master->nacionalidade == 'Estados Unidos' ? 'selected' : '' }} value="Estados Unidos">Estados Unidos</option>
+                                <option {{ $master->nacionalidade == 'Estados Unidos da América' ? 'selected' : '' }} value="Estados Unidos da América">Estados Unidos da América</option>
                                 <option {{ $master->nacionalidade == 'França' ? 'selected' : '' }} value="França">França</option>
                                 <option {{ $master->nacionalidade == 'Grécia' ? 'selected' : '' }} value="Grécia">Grécia</option>
                                 <option {{ $master->nacionalidade == 'Índia' ? 'selected' : '' }} value="Índia">Índia</option>

@@ -17,7 +17,7 @@ class MasterController extends Controller
     public function index()
     {
         $master = MasterModel::paginate(5);
-        $count_master = DB::table('master')->count('nome');
+        $count_master = DB::table('masters')->count('nome');
         return view('master.master', compact(['master','count_master']));
     }
 

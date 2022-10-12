@@ -40,7 +40,7 @@
                                 <option {{ $fighter->nacionalidade == 'Coréia do Sul' ? 'selected' : '' }} value="Coréia do Sul">Coréia do Sul</option>
                                 <option {{ $fighter->nacionalidade == 'Egito' ? 'selected' : '' }} value="Egito">Egito</option>
                                 <option {{ $fighter->nacionalidade == 'Espanha' ? 'selected' : '' }} value="Espanha">Espanha</option>
-                                <option {{ $fighter->nacionalidade == 'Estados Unidos' ? 'selected' : '' }} value="Estados Unidos">Estados Unidos</option>
+                                <option {{ $fighter->nacionalidade == 'Estados Unidos da América' ? 'selected' : '' }} value="Estados Unidos da América">Estados Unidos da América</option>
                                 <option {{ $fighter->nacionalidade == 'França' ? 'selected' : '' }} value="França">França</option>
                                 <option {{ $fighter->nacionalidade == 'Grécia' ? 'selected' : '' }} value="Grécia">Grécia</option>
                                 <option {{ $fighter->nacionalidade == 'Índia' ? 'selected' : '' }} value="Índia">Índia</option>

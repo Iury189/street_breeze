@@ -9,15 +9,15 @@ class DojoModel extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = 'dojo';
+    protected $table = 'dojos';
     protected $primaryKey = 'id';
-    protected $fillable = ['id_fighter','id_master'];
+    protected $fillable = ['fighter_id','master_id'];
 
     public function fighter(){
-        return $this->hasOne(FighterModel::class,'id','id_fighter');
+        return $this->hasOne(FighterModel::class,'id','fighter_id');
     }
 
     public function master(){
-        return $this->hasOne(MasterModel::class,'id','id_master');
+        return $this->hasOne(MasterModel::class,'id','master_id');
     }
 }

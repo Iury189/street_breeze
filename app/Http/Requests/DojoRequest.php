@@ -24,20 +24,20 @@ class DojoRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_fighter' => 'required|integer|exists:fighter,id',
-            'id_master' => 'required|integer|exists:master,id',
+            'fighter_id' => 'required|integer|exists:fighters,id',
+            'master_id' => 'required|integer|exists:masters,id',
         ];
     }
     // Mensagens personalizadas
     public function messages()
     {
         return [
-            'id_fighter.required' => 'É obrigatório definir o Fighter.',
-            'id_fighter.integer' => 'O ID do Fighter precisa ser um valor inteiro.',
-            'id_fighter.exists' => 'O ID do Fighter precisa existir no banco de dados.',
-            'id_master.required' => 'É obrigatório definir o Master.',
-            'id_master.integer' => 'O ID do do Master precisa ser um valor inteiro.',
-            'id_master.exists' => 'O ID do Master precisa existir no banco de dados.',
+            'fighter_id.required' => 'É obrigatório definir o Fighter.',
+            'fighter_id.integer' => 'O ID do Fighter precisa ser um valor inteiro.',
+            'fighter_id.exists' => 'O ID do Fighter precisa existir no banco de dados.',
+            'master_id.required' => 'É obrigatório definir o Master.',
+            'master_id.integer' => 'O ID do do Master precisa ser um valor inteiro.',
+            'master_id.exists' => 'O ID do Master precisa existir no banco de dados.',
         ];
     }
 }

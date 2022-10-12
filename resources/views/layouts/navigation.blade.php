@@ -28,7 +28,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="url('dojo')" :active="request()->routeIs('dojo')">
-                        {{ __('Dojô') }}
+                        {{ __('Dojôs') }}
                     </x-nav-link>
                 </div>
             </div>

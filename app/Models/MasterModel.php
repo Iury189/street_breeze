@@ -10,7 +10,7 @@ class MasterModel extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = 'master';
+    protected $table = 'masters';
     protected $primaryKey = 'id';
     protected $fillable = ['nome','arte_marcial','nacionalidade','genero','altura','peso'];
     protected $casts = ['genero' => Genero::class];

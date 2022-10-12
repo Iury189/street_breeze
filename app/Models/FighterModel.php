@@ -10,7 +10,7 @@ class FighterModel extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = 'fighter';
+    protected $table = 'fighters';
     protected $primaryKey = 'id';
     protected $fillable = ['nome','arte_marcial','nacionalidade','genero','altura','peso'];
     protected $casts = ['genero' => Genero::class];

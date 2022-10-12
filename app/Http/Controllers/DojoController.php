@@ -19,7 +19,7 @@ class DojoController extends Controller
     public function index()
     {
         $dojo = DojoModel::paginate(5);
-        $count_dojo = DB::table('dojo')->count('id');
+        $count_dojo = DB::table('dojos')->count('id');
         return view('dojo.dojo', compact(['dojo','count_dojo']));
     }
 

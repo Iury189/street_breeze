@@ -40,8 +40,8 @@
                         @foreach ($dojo as $d)
                           <tr>
                             <td title="{{ $d->id }}"> {{ $d->id }} </td>
-                            <td title="{{ $d->id_fighter == $d->fighter->id ? $d->fighter->nome : '' }}"> {{ $d->id_fighter == $d->fighter->id ? $d->fighter->nome : '' }} </td>  
-                            <td title="{{ $d->id_master == $d->master->id ? $d->master->nome : '' }}"> {{ $d->id_master == $d->master->id ? $d->master->nome : '' }} </td>   
+                            <td title="{{ $d->fighter_id == $d->fighter->id ? $d->fighter->nome : '' }}"> {{ $d->fighter_id == $d->fighter->id ? $d->fighter->nome : '' }} </td>  
+                            <td title="{{ $d->master_id == $d->master->id ? $d->master->nome : '' }}"> {{ $d->master_id == $d->master->id ? $d->master->nome : '' }} </td>   
                             <td>
                               <form action="{{ url("delete-dojo/$d->id") }}" method="POST">
                                 <a href="{{ url("update-dojo/$d->id") }}" class="btn btn-primary" title="Atualizar {{ $d->nome }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
