@@ -11,6 +11,10 @@ use App\Models\MasterModel;
 
 class DojoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

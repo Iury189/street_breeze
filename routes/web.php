@@ -51,8 +51,4 @@ Route::controller(DojoController::class)->group(function() {
     Route::delete('/delete-dojo/{id}', 'destroy');
 });
 
-// Route::prefix('fighter')->group(function() {
-//     Route::get('/create', [FighterController::class, 'create'])->name('fighter.create');
-// });
-
 require __DIR__.'/auth.php';
