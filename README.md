@@ -12,6 +12,13 @@
 
 ## Register
 ![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Register.png?raw=true)
+
+## Forgot Password
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/ForgotPassword.png?raw=true)
+
+## Password Reset
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/PasswordReset.png?raw=true)
+
 ## Dashboard
 ![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Dashboard.png?raw=true)
 
