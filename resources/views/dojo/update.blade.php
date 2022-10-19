@@ -1,7 +1,9 @@
+@section('title') {{"Atualizar Dojô Nº$dojo->id"}} @endsection
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Atualizar Dojô') }}
+            {{ __("Atualizar Dojô Nº$dojo->id") }}
         </h2>
     </x-slot>
     <div class="py-12">   
