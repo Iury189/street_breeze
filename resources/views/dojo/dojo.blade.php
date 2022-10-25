@@ -4,11 +4,11 @@
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         @if ($count_dojo <= 0)
-          {{ __('Não existem registros de treinamento no banco de dados.') }}
+          {{ Str::words(Auth::user()->name, 1, '') }}, {{ __('não existem registros de treinamento no banco de dados.') }}
         @elseif ($count_dojo == 1)
-          {{ __("Existe apenas $count_dojo registro de treinamento no banco de dados.") }}
+          {{ Str::words(Auth::user()->name, 1, '') }}, {{ __("existe apenas $count_dojo registro de treinamento no banco de dados.") }}
         @elseif ($count_dojo > 1)
-          {{ __("Existem $count_dojo registros de treinamento no banco de dados.") }}
+          {{ Str::words(Auth::user()->name, 1, '') }}, {{ __("existem $count_dojo registros de treinamento no banco de dados.") }}
         @endif
       </h2>
         @if (Session::has('success-store'))

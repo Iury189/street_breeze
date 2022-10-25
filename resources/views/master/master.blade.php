@@ -4,11 +4,11 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
           @if ($count_master <= 0)
-            {{ __('Não existem Masters no banco de dados.') }}
+            {{ Str::words(Auth::user()->name, 1, '') }}, {{ __('não existem Masters no banco de dados.') }}
           @elseif ($count_master == 1)
-            {{ __("Existe apenas $count_master Master no banco de dados.") }}
+            {{ Str::words(Auth::user()->name, 1, '') }}, {{ __("existe apenas $count_master Master no banco de dados.") }}
           @elseif ($count_master > 1)
-            {{ __("Existem $count_master Masters no banco de dados.") }}
+            {{ Str::words(Auth::user()->name, 1, '') }}, {{ __("existem $count_master Masters no banco de dados.") }}
           @endif
         </h2>
           @if (Session::has('success-store'))
