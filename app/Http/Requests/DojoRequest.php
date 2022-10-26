@@ -24,7 +24,7 @@ class DojoRequest extends FormRequest
     public function rules()
     {
         return [
-            'fighter_id' => 'required|integer|exists:fighters,id',
+            'fighter_id' => 'required|integer|exists:fighters,id|unique:fighters,id',
             'master_id' => 'required|integer|exists:masters,id',
         ];
     }
@@ -35,8 +35,9 @@ class DojoRequest extends FormRequest
             'fighter_id.required' => 'É obrigatório definir o Fighter.',
             'fighter_id.integer' => 'O ID do Fighter precisa ser um valor inteiro.',
             'fighter_id.exists' => 'O ID do Fighter precisa existir no banco de dados.',
+            'fighter_id.unique' => 'Esse Fighter já está sendo treinado por outro Master.',
             'master_id.required' => 'É obrigatório definir o Master.',
-            'master_id.integer' => 'O ID do do Master precisa ser um valor inteiro.',
+            'master_id.integer' => 'O ID do Master precisa ser um valor inteiro.',
             'master_id.exists' => 'O ID do Master precisa existir no banco de dados.',
         ];
     }
