@@ -68,7 +68,7 @@
                         <br>
                         <div>
                             <x-input-label for="altura" :value="__('Altura:')" />
-                            <x-text-input id="altura" class="block mt-1 w-full" type="text" name="altura" value="{{ $fighter->altura }}" autofocus onkeypress="$(this).mask('0.00', {reverse: true});"/>
+                            <x-text-input id="altura" class="block mt-1 w-full" type="text" name="altura" value="{{ $fighter->altura }}" autofocus onkeypress="$(this).mask('0.00');"/>
                         </div>
                         <br>
                         <div>
@@ -77,7 +77,7 @@
                         </div>
                         <br>
                         <div>
-                            <x-primary-button class="ml-3"> {{ __('Atualizar') }} </x-primary-button> 
+                            <x-primary-button class="ml-3"><i class="fa fa-arrows-rotate"></i>&nbsp; {{ __('Atualizar') }} </x-primary-button> 
                         </div>
                     </form>
                 </div>
