@@ -9,7 +9,7 @@
         <title> @yield('title') </title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="{{ asset('css/font-family.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('jquery/jquery-3.6.1.slim.js') }}"></script>
