@@ -31,6 +31,13 @@
                         {{ __('Dojôs') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @can('onlyAdmin')
+                        <x-nav-link :href="url('admin')" :active="request()->routeIs('admin')">
+                            {{ __('Admin') }}
+                        </x-nav-link>
+                    @endcan
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

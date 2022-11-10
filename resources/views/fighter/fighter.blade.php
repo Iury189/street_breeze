@@ -1,4 +1,4 @@
-@section('title') {{'Listar Fighters'}} @endsection
+@section('title') {{'Listar fighters'}} @endsection
 
 <x-app-layout>
     <x-slot name="header">

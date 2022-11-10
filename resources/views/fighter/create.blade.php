@@ -1,9 +1,9 @@
-@section('title') {{'Cadastrar Fighter'}} @endsection
+@section('title') {{'Cadastrar fighter'}} @endsection
 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cadastrar Fighter') }}
+            {{ __('Cadastrar fighter') }}
         </h2>
     </x-slot>
     <div class="py-12">   

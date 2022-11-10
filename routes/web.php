@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FighterController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\DojoController;
@@ -49,6 +50,10 @@ Route::controller(DojoController::class)->group(function() {
     Route::get('/update-dojo/{id}', 'edit');
     Route::patch('/update-dojo/{id}', 'update');
     Route::delete('/delete-dojo/{id}', 'destroy');
+});
+
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin', 'viewAdmin');
 });
 
 require __DIR__.'/auth.php';

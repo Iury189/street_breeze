@@ -19,13 +19,20 @@
 ## Password Reset
 ![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/PasswordReset.png?raw=true)
 
-## Dashboard
+## Dashboard (User)
 ![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Dashboard.png?raw=true)
 
-## Fighter
+## Dashboard (Admin)
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/DashboardAdmin.png?raw=true)
+
+## Fighter (User and Admin)
 ![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Fighter.png?raw=true)
-## Master
+
+## Master (User and Admin)
 ![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Master.png?raw=true)
 
-## Dojo
+## Dojo (User and Admin)
 ![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Dojo.png?raw=true)
+
+## Admin (Admin)
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Admin.png?raw=true)
