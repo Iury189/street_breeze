@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('onlyAdmin',function(User $user) {
+        Gate::define('onlyAdmin', function(User $user) {
             return $user->role === 1;
         });
     }

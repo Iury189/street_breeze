@@ -62,6 +62,24 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
+        // Log personalizado
+        'logPageAdmin' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logPageAdmin.log'),
+            'level' => 'debug',
+        ],
+        // Log personalizado
+        'logLogin' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logLogin.log'),
+            'level' => 'debug',
+        ], 
+        // Log personalizado
+        'logLogout' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logLogout.log'),
+            'level' => 'debug',
+        ],         
 
         'daily' => [
             'driver' => 'daily',
