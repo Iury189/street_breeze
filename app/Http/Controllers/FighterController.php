@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Loggings\LogFighter;
+use App\Models\FighterModel;
+use App\Models\LoggingModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\FighterRequest;
-use App\Models\FighterModel;
 
 class FighterController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
+        $this->logFighter = new LogFighter();
+        $this->loggingModel = new LoggingModel();
     }
     /**
      * Display a listing of the resource.
@@ -44,8 +49,12 @@ class FighterController extends Controller
     public function store(FighterRequest $request)
     {
         $validacoes = $request->validated();
-        FighterModel::create($validacoes);
-        return redirect('fighter')->with('success-store','Fighter está presente no sistema.');  
+        FighterModel::create($validacoes); // Condição não operante 
+        $this->loggingModel->create([
+            'descricao' => $this->logFighter->logCreateFighter(), 
+                'metodo_operacao' => 'store',
+            ]);
+        return redirect('fighter')->with('success-store','Fighter está presente no sistema.');   
     }
 
     /**
@@ -82,6 +91,10 @@ class FighterController extends Controller
     {
         $validacoes = $request->validated();
         FighterModel::where('id',$id)->update($validacoes);
+        $this->loggingModel->create([
+            'descricao' => $this->logFighter->logUpdateFighter(), 
+            'metodo_operacao' => 'update',
+        ]);
         return redirect('fighter')->with('success-update','Fighter obteve atualizações em suas informações.');  
     }
 
@@ -93,6 +106,10 @@ class FighterController extends Controller
      */
     public function destroy($id)
     {
+        $this->loggingModel->create([
+            'descricao' => $this->logFighter->logDeleteFighter(), 
+            'metodo_operacao' => 'destroy',
+        ]);
         FighterModel::where('id',$id)->delete();
         return redirect('fighter')->with('success-destroy','Fighter não está mais presente no sistema.');    
     }

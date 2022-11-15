@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\LoggingModel;
 use Illuminate\Http\Request;
 use App\Loggings\LogAllUsers;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,8 @@ class AuthenticatedSessionController extends Controller
 {
     public function __construct()
     {
-        $this->logAllUsers = new LogAllUsers();    
+        $this->logAllUsers = new LogAllUsers();
+        $this->loggingModel = new LoggingModel();    
     }
 
     /**
@@ -36,7 +38,10 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        $this->logAllUsers->logLogin();
+        $this->loggingModel->create([
+            'descricao' => $this->logAllUsers->logLogin(), 
+            'metodo_operacao' => 'login',
+        ]);
         //return redirect()->intended(RouteServiceProvider::HOME);
         return redirect('/dashboard');
     }
@@ -49,7 +54,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $this->logAllUsers->logLogout();
+        $this->loggingModel->create([
+            'descricao' => $this->logAllUsers->logLogout(), 
+            'metodo_operacao' => 'logout',
+        ]);
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

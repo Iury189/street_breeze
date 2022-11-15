@@ -11,7 +11,10 @@ class DojoModel extends Model
     public $timestamps = false;
     protected $table = 'dojos';
     protected $primaryKey = 'id';
-    protected $fillable = ['fighter_id','master_id'];
+    protected $fillable = [
+        'fighter_id',
+        'master_id'
+    ];
 
     public function fighter(){
         return $this->hasOne(FighterModel::class,'id','fighter_id');

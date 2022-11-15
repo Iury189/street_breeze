@@ -12,6 +12,15 @@ class MasterModel extends Model
     public $timestamps = false;
     protected $table = 'masters';
     protected $primaryKey = 'id';
-    protected $fillable = ['nome','arte_marcial','nacionalidade','genero','altura','peso'];
-    protected $casts = ['genero' => Genero::class];
+    protected $fillable = [
+        'nome',
+        'arte_marcial',
+        'nacionalidade',
+        'genero',
+        'altura',
+        'peso'
+    ];
+    protected $casts = [
+        'genero' => Genero::class
+    ];
 }

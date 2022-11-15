@@ -12,6 +12,15 @@ class FighterModel extends Model
     public $timestamps = false;
     protected $table = 'fighters';
     protected $primaryKey = 'id';
-    protected $fillable = ['nome','arte_marcial','nacionalidade','genero','altura','peso'];
-    protected $casts = ['genero' => Genero::class];
+    protected $fillable = [
+        'nome',
+        'arte_marcial',
+        'nacionalidade',
+        'genero',
+        'altura',
+        'peso'
+    ];
+    protected $casts = [
+        'genero' => Genero::class
+    ];
 }

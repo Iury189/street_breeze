@@ -63,12 +63,6 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
         ],
         // Log personalizado
-        'logPageAdmin' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/logPageAdmin.log'),
-            'level' => 'debug',
-        ],
-        // Log personalizado
         'logLogin' => [
             'driver' => 'single',
             'path' => storage_path('logs/logLogin.log'),
@@ -79,8 +73,26 @@ return [
             'driver' => 'single',
             'path' => storage_path('logs/logLogout.log'),
             'level' => 'debug',
-        ],         
-
+        ],
+        // Log personalizado
+        'logCreateFighter' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logCreateFighter.log'),
+            'level' => 'debug',
+        ],
+        // Log personalizado
+        'logUpdateFighter' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logUpdateFighter.log'),
+            'level' => 'debug',
+        ], 
+        // Log personalizado
+        'logDeleteFighter' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logDeleteFighter.log'),
+            'level' => 'debug',
+        ],
+         
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),
