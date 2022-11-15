@@ -49,11 +49,11 @@ class FighterController extends Controller
     public function store(FighterRequest $request)
     {
         $validacoes = $request->validated();
-        FighterModel::create($validacoes); // Condição não operante 
+        FighterModel::create($validacoes);
         $this->loggingModel->create([
             'descricao' => $this->logFighter->logCreateFighter(), 
-                'metodo_operacao' => 'store',
-            ]);
+            'metodo_operacao' => 'store',
+        ]);
         return redirect('fighter')->with('success-store','Fighter está presente no sistema.');   
     }
 
