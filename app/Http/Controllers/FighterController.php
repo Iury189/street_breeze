@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
 use App\Loggings\LogFighter;
 use App\Models\FighterModel;
 use App\Models\LoggingModel;
@@ -51,8 +50,9 @@ class FighterController extends Controller
         $validacoes = $request->validated();
         FighterModel::create($validacoes);
         $this->loggingModel->create([
-            'descricao' => $this->logFighter->logCreateFighter(), 
+            'descricao_log' => $this->logFighter->logCreateFighter(), 
             'metodo_operacao' => 'store',
+            'relacao' => "{$validacoes['nome']} agora está presente no sistema.",
         ]);
         return redirect('fighter')->with('success-store','Fighter está presente no sistema.');   
     }
@@ -91,9 +91,11 @@ class FighterController extends Controller
     {
         $validacoes = $request->validated();
         FighterModel::where('id',$id)->update($validacoes);
+        $id_fighter = DB::table('fighters')->where('id','=',$id)->value('id');
         $this->loggingModel->create([
-            'descricao' => $this->logFighter->logUpdateFighter(), 
+            'descricao_log' => $this->logFighter->logUpdateFighter(), 
             'metodo_operacao' => 'update',
+            'relacao' => "Fighter ID $id_fighter obteve atualizações em suas informações.",
         ]);
         return redirect('fighter')->with('success-update','Fighter obteve atualizações em suas informações.');  
     }
@@ -106,9 +108,11 @@ class FighterController extends Controller
      */
     public function destroy($id)
     {
+        $id_fighter = DB::table('fighters')->where('id','=',$id)->value('id');
         $this->loggingModel->create([
-            'descricao' => $this->logFighter->logDeleteFighter(), 
+            'descricao_log' => $this->logFighter->logDeleteFighter(), 
             'metodo_operacao' => 'destroy',
+            'relacao' => "Fighter ID $id_fighter foi excluído(a) do sistema.",
         ]);
         FighterModel::where('id',$id)->delete();
         return redirect('fighter')->with('success-destroy','Fighter não está mais presente no sistema.');    

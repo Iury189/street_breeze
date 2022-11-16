@@ -11,5 +11,9 @@ class LoggingModel extends Model
     public $timestamps = false;
     protected $table = 'loggings';
     protected $primaryKey = 'id';
-    protected $fillable = ['descricao','metodo_operacao'];
+    protected $fillable = [
+        'descricao_log',
+        'metodo_operacao',
+        'relacao',
+    ];
 }
