@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\LoggingModel;
 use Illuminate\Http\Request;
-use App\Loggings\LogAllUsers;
+use App\Loggings\LogUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Providers\RouteServiceProvider;
 
 class AuthenticatedSessionController extends Controller
 {
     public function __construct()
     {
-        $this->logAllUsers = new LogAllUsers();
+        $this->logUser = new LogUser();
         $this->loggingModel = new LoggingModel();    
     }
 
@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
         $this->loggingModel->create([
-            'descricao_log' => $this->logAllUsers->logLogin(), 
+            'descricao_log' => $this->logUser->logLogin(), 
             'metodo_operacao' => 'login',
         ]);
         //return redirect()->intended(RouteServiceProvider::HOME);
@@ -55,7 +55,7 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         $this->loggingModel->create([
-            'descricao_log' => $this->logAllUsers->logLogout(), 
+            'descricao_log' => $this->logUser->logLogout(), 
             'metodo_operacao' => 'logout',
         ]);
         Auth::guard('web')->logout();

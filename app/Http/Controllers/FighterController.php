@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Loggings\LogFighter;
 use App\Models\FighterModel;
 use App\Models\LoggingModel;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\FighterRequest;
+use Illuminate\Http\Request;
 
 class FighterController extends Controller
 {
@@ -52,7 +52,7 @@ class FighterController extends Controller
         $this->loggingModel->create([
             'descricao_log' => $this->logFighter->logCreateFighter(), 
             'metodo_operacao' => 'store',
-            'relacao' => "{$validacoes['nome']} agora está presente no sistema.",
+            'relacao' => "Fighter {$validacoes['nome']} agora está presente no sistema.",
         ]);
         return redirect('fighter')->with('success-store','Fighter está presente no sistema.');   
     }

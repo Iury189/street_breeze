@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DojoRequest;
+use App\Loggings\LogDojo;
 use App\Models\DojoModel;
+use App\Models\LoggingModel;
 use App\Models\FighterModel;
 use App\Models\MasterModel;
+use Illuminate\Http\Request;
 
 class DojoController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
+        $this->logDojo = new LogDojo();
+        $this->loggingModel = new LoggingModel();
     }
     /**
      * Display a listing of the resource.
@@ -49,6 +53,11 @@ class DojoController extends Controller
     {
         $validacoes = $request->validated();
         DojoModel::create($validacoes);
+        $this->loggingModel->create([
+            'descricao_log' => $this->logDojo->logCreateDojo(), 
+            'metodo_operacao' => 'store',
+            'relacao' => "Um novo dojô agora está presente no sistema.",
+        ]);
         return redirect('dojo')->with('success-store','Dojo está presente no sistema.');  
     }
 
@@ -88,6 +97,12 @@ class DojoController extends Controller
     {
         $validacoes = $request->validated();
         DojoModel::where('id',$id)->update($validacoes);
+        $id_dojo = DB::table('dojos')->where('id','=',$id)->value('id');
+        $this->loggingModel->create([
+            'descricao_log' => $this->logDojo->logUpdateDojo(), 
+            'metodo_operacao' => 'update',
+            'relacao' => "Dojô ID $id_dojo obteve atualizações em suas informações.",
+        ]);
         return redirect('dojo')->with('success-update','O dojo obteve atualizações em suas informações.');  
     }
 
@@ -99,6 +114,12 @@ class DojoController extends Controller
      */
     public function destroy($id)
     {
+        $id_dojo = DB::table('dojos')->where('id','=',$id)->value('id');
+        $this->loggingModel->create([
+            'descricao_log' => $this->logDojo->logDeleteDojo(), 
+            'metodo_operacao' => 'destroy',
+            'relacao' => "Dojô ID $id_dojo foi excluído(a) do sistema.",
+        ]);
         DojoModel::where('id',$id)->delete();
         return redirect('dojo')->with('success-destroy','Dojo não está mais presente no sistema.');
     }

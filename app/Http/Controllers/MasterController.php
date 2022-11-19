@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Loggings\LogMaster;
+use App\Models\MasterModel;
+use App\Models\LoggingModel;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MasterRequest;
-use App\Models\MasterModel;
+use Illuminate\Http\Request;
 
 class MasterController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
+        $this->logMaster = new LogMaster();
+        $this->loggingModel = new LoggingModel();
     }
     /**
      * Display a listing of the resource.
@@ -45,6 +49,11 @@ class MasterController extends Controller
     {
         $validacoes = $request->validated();
         MasterModel::create($validacoes);
+        $this->loggingModel->create([
+            'descricao_log' => $this->logMaster->logCreateMaster(), 
+            'metodo_operacao' => 'store',
+            'relacao' => "Master {$validacoes['nome']} agora está presente no sistema.",
+        ]);
         return redirect('master')->with('success-store','Master está presente no sistema.');  
     }
 
@@ -82,6 +91,12 @@ class MasterController extends Controller
     {
         $validacoes = $request->validated();
         MasterModel::where('id',$id)->update($validacoes);
+        $id_master = DB::table('masters')->where('id','=',$id)->value('id');
+        $this->loggingModel->create([
+            'descricao_log' => $this->logMaster->logUpdateMaster(), 
+            'metodo_operacao' => 'update',
+            'relacao' => "Master ID $id_master obteve atualizações em suas informações.",
+        ]);
         return redirect('master')->with('success-update','Master obteve atualizações em suas informações.');  
     }
 
@@ -93,6 +108,12 @@ class MasterController extends Controller
      */
     public function destroy($id)
     {
+        $id_master = DB::table('masters')->where('id','=',$id)->value('id');
+        $this->loggingModel->create([
+            'descricao_log' => $this->logMaster->logDeleteMaster(), 
+            'metodo_operacao' => 'destroy',
+            'relacao' => "Master ID $id_master foi excluído(a) do sistema.",
+        ]);
         MasterModel::where('id',$id)->delete();
         return redirect('master')->with('success-destroy','Master não está mais presente no sistema.');    
     }
