@@ -20,7 +20,4 @@ class FighterModel extends Model
         'altura',
         'peso'
     ];
-    protected $casts = [
-        'genero' => Genero::class
-    ];
 }

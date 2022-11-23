@@ -49,7 +49,7 @@
                               <td title="{{ $sf->nome }}"> {{ $sf->nome }} </td>  
                               <td title="{{ $sf->arte_marcial }}"> {{ $sf->arte_marcial }} </td>  
                               <td title="{{ $sf->nacionalidade }}"> {{ $sf->nacionalidade }} </td>  
-                              <td title="{{ $sf->genero->value }}"> {{ $sf->genero->value }} </td>
+                              <td title="{{ $sf->genero }}"> {{ $sf->genero }} </td>
                               <td title="{{ $sf->altura }} m"> {{ $sf->altura }} m </td>  
                               <td title="{{ $sf->peso }} kg"> {{ $sf->peso }} kg </td>
                               <td>

@@ -20,7 +20,4 @@ class MasterModel extends Model
         'altura',
         'peso'
     ];
-    protected $casts = [
-        'genero' => Genero::class
-    ];
 }
