@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Loggings\LogUser;
+use Illuminate\Support\Str;
 use App\Models\LoggingModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
@@ -23,4 +25,5 @@ class AdminController extends Controller
         Gate::authorize('onlyAdmin', $user);
         return view('admin.admin', compact('user'));
     }
+    
 }

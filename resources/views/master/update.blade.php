@@ -67,6 +67,11 @@
                         </div>
                         <br>
                         <div>
+                            <x-input-label for="idade" :value="__('Idade:')" />
+                            <x-text-input id="idade" class="block mt-1 w-full" type="text" name="idade"  value="{{ $master->idade }}" autofocus onkeypress="$(this).mask('00');"/>
+                        </div>
+                        <br>
+                        <div>
                             <x-input-label for="altura" :value="__('Altura:')" />
                             <x-text-input id="altura" class="block mt-1 w-full" type="text" name="altura" value="{{ $master->altura }}" autofocus onkeypress="$(this).mask('0.00');"/>
                         </div>

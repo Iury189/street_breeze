@@ -4,9 +4,9 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             @if (Auth::user()->role == 0)
-                {{ __('Hello, ')}} {{ Auth::user()->name }} (User).
+                {{ __('Hello, ')}} {{ Str::words(Auth::user()->name, 1, '') }} (User).
             @else
-                {{ __('Hello, ')}} {{ Auth::user()->name }} (Administrador).
+                {{ __('Hello, ')}} {{ Str::words(Auth::user()->name, 1, '') }} (Administrador).
             @endif
         </h2>
     </x-slot>

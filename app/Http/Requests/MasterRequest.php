@@ -34,6 +34,7 @@ class MasterRequest extends FormRequest
                 'Itália','Jamaica','Japão','México','Quênia','Rússia','Tailândia'])
             ],
             'genero' => ['required', Rule::in(['Masculino','Feminino'])],
+            'idade' => 'required|integer|min:18|max:65',
             'altura' => 'required|numeric|min:1.50|max:2.50',
             'peso' => 'required|numeric|min:50.00|max:150.00',
         ];
@@ -51,6 +52,10 @@ class MasterRequest extends FormRequest
             'nacionalidade.in' => 'A nacionalidade precisa ser uma das opções existentes abaixo.',
             'genero.required' => 'É obrigatório definir o gênero do Master.',
             'genero.in' => 'O gênero do Master precisa ser Masculino ou Feminino.',
+            'idade.required' => 'É obrigatório definir a idade do Master.',
+            'idade.integer' => 'A idade do Master precisa ser um valor inteiro.',
+            'idade.min' => 'A idade mínima do Master precisa ser de 18 anos.',
+            'idade.max' => 'A idade máxima do Master precisa ser de 65 anos.',
             'altura.required' => 'É obrigatório definir a altura do Master.',
             'altura.numeric' => 'A altura do Master precisa ser um valor numérico.',
             'altura.min' => 'A altura mínima do Master deve ser de 1.50 m.',

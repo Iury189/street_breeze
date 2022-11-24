@@ -34,6 +34,7 @@ class FighterRequest extends FormRequest
                 'Itália','Jamaica','Japão','México','Quênia','Rússia','Tailândia'])
             ],
             'genero' => ['required', Rule::in(['Masculino', 'Feminino'])],
+            'idade' => 'required|integer|min:18|max:65',
             'altura' => 'required|numeric|min:1.50|max:2.50',
             'peso' => 'required|numeric|min:50.00|max:150.00',
         ];
@@ -51,6 +52,10 @@ class FighterRequest extends FormRequest
             'nacionalidade.in' => 'A nacionalidade precisa ser uma das opções existentes abaixo.',
             'genero.required' => 'É obrigatório definir o gênero do Fighter.',
             'genero.in' => 'O gênero do Fighter precisa ser Masculino ou Feminino.',
+            'idade.required' => 'É obrigatório definir a idade do Fighter.',
+            'idade.integer' => 'A idade do Fighter precisa ser um valor inteiro.',
+            'idade.min' => 'A idade mínima do Fighter precisa ser de 18 anos.',
+            'idade.max' => 'A idade máxima do Fighter precisa ser de 65 anos.',
             'altura.required' => 'É obrigatório definir a altura do Fighter.',
             'altura.numeric' => 'A altura do Fighter precisa ser um valor numérico.',
             'altura.min' => 'A altura mínima do Fighter deve ser de 1.50 m.',

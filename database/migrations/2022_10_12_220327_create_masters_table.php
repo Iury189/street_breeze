@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('arte_marcial', 50);
             $table->string('nacionalidade', 30);
             $table->enum('genero', ['Masculino', 'Feminino']);
+            $table->integer('idade');
             $table->decimal('altura', 3,2);
             $table->decimal('peso', 5,2);
         });

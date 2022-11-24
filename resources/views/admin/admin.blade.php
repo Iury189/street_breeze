@@ -27,7 +27,7 @@
                           <tr>
                             <td title="{{ $u->id }}"> {{ $u->id }} </td>
                             <td title="{{ $u->name }}"> {{ $u->name }} </td>
-                            <td title="{{ $u->email }}"> {{ $u->email }} </td>
+                            <td title="{{ Str::mask($u->email, '*', 3) }}"> {{ Str::mask($u->email, '*', 3) }} </td>
                             <td title="{{ $u->role == 0 ? "User" : "Administrator" }}"> {{ $u->role == 0 ? "User" : "Administrator" }} </td>
                           </tr>   
                         @endforeach

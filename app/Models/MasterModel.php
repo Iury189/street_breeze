@@ -17,6 +17,7 @@ class MasterModel extends Model
         'arte_marcial',
         'nacionalidade',
         'genero',
+        'idade',
         'altura',
         'peso'
     ];

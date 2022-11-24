@@ -37,6 +37,7 @@
                             <th title="Arte Marcial"> Arte Marcial </th>
                             <th title="Nacionalidade"> Nacionalidade </th>
                             <th title="Gênero"> Gênero </th>
+                            <th title="Idade"> Idade </th>
                             <th title="Altura"> Altura </th>
                             <th title="Peso"> Peso </th>
                             <th title="Ação(ões)"> Ação(ões) </th>
@@ -50,6 +51,7 @@
                               <td title="{{ $msf->arte_marcial }}"> {{ $msf->arte_marcial }} </td>  
                               <td title="{{ $msf->nacionalidade }}"> {{ $msf->nacionalidade }} </td>  
                               <td title="{{ $msf->genero }}"> {{ $msf->genero }} </td>
+                              <td title="{{ $msf->idade }} "> {{ $msf->idade }} </td>
                               <td title="{{ $msf->altura }} m"> {{ $msf->altura }} m </td>  
                               <td title="{{ $msf->peso }} kg"> {{ $msf->peso }} kg </td>
                               <td>

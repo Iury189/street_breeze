@@ -25,6 +25,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/change_password', function () {
+    return view('change_password');
+})->middleware(['auth'])->name('change_password');
+
 Route::controller(FighterController::class)->group(function() {
     Route::get('/fighter', 'index');
     Route::get('/add-fighter', 'create');

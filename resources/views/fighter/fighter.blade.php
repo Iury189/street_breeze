@@ -34,9 +34,10 @@
                           <tr>
                             <th title="ID"> ID </th>
                             <th title="Nome"> Nome </th>
-                            <th title="Arte Marcial"> Arte Marcial </th>
+                            <th title="Arte Marcial"> Arte marcial </th>
                             <th title="Nacionalidade"> Nacionalidade </th>
                             <th title="Gênero"> Gênero </th>
+                            <th title="Idade"> Idade </th>
                             <th title="Altura"> Altura </th>
                             <th title="Peso"> Peso </th>
                             <th title="Ação(ões)"> Ação(ões) </th>
@@ -50,6 +51,7 @@
                               <td title="{{ $sf->arte_marcial }}"> {{ $sf->arte_marcial }} </td>  
                               <td title="{{ $sf->nacionalidade }}"> {{ $sf->nacionalidade }} </td>  
                               <td title="{{ $sf->genero }}"> {{ $sf->genero }} </td>
+                              <td title="{{ $sf->idade }} "> {{ $sf->idade }} </td>
                               <td title="{{ $sf->altura }} m"> {{ $sf->altura }} m </td>  
                               <td title="{{ $sf->peso }} kg"> {{ $sf->peso }} kg </td>
                               <td>
