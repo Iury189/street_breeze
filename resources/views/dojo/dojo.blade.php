@@ -47,6 +47,9 @@
                             <td>
                               <form action="{{ url("delete-dojo/$d->id") }}" method="POST">
                                 <a href="{{ url("update-dojo/$d->id") }}" class="btn btn-primary" title="Atualizar {{ $d->nome }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
+                                @can('showAdmin', auth()->user())
+                                  <a href="{{ url("show-dojo/$d->id") }}" class="btn btn-warning" title="Ver {{ $d->nome }}"><i class="fa fa-eye"></i>&nbsp;Visualizar</a>
+                                @endcan
                                 @csrf @method('DELETE')
                                 <x-primary-button class="ml-3" title="Deletar {{ $d->nome }}"><i class="fa fa-trash"></i>&nbsp; {{ __('Deletar') }} </x-primary-button>  
                               </form>

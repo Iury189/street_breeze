@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\Loggings\LogFighter;
 use App\Models\FighterModel;
 use App\Models\LoggingModel;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\FighterRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\FighterRequest;
 
 class FighterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
+        $this->middleware('auth')->only(['index','create','store','show','edit','update','destroy']);
         $this->logFighter = new LogFighter();
         $this->loggingModel = new LoggingModel();
     }
@@ -65,7 +66,9 @@ class FighterController extends Controller
      */
     public function show($id)
     {
-        // 
+        $fighter = FighterModel::find($id);
+        $this->authorize('showAdmin', Auth::user());
+        return view('fighter.show', compact('fighter')); 
     }
 
     /**

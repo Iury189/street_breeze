@@ -55,6 +55,9 @@
                               <td>
                                 <form action="{{ url("delete-fighter/$sf->id") }}" method="POST">
                                   <a href="{{ url("update-fighter/$sf->id") }}" class="btn btn-primary" title="Atualizar {{ $sf->nome }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
+                                  @can('showAdmin', auth()->user())
+                                    <a href="{{ url("show-fighter/$sf->id") }}" class="btn btn-warning" title="Ver {{ $sf->nome }}"><i class="fa fa-eye"></i>&nbsp;Visualizar</a>
+                                  @endcan
                                   @csrf @method('DELETE')
                                   <x-primary-button class="ml-3" title="Deletar {{ $sf->nome }}"><i class="fa fa-trash"></i>&nbsp; {{ __('Deletar') }} </x-primary-button>  
                                 </form>

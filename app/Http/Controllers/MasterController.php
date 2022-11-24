@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\Loggings\LogMaster;
 use App\Models\MasterModel;
 use App\Models\LoggingModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MasterRequest;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MasterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
+        $this->middleware('auth')->only(['index','create','store','show','edit','update','destroy']);
         $this->logMaster = new LogMaster();
         $this->loggingModel = new LoggingModel();
     }
@@ -65,7 +66,9 @@ class MasterController extends Controller
      */
     public function show($id)
     {
-        
+        $master = MasterModel::find($id);
+        $this->authorize('showAdmin', Auth::user());
+        return view('master.show', compact('master')); 
     }
 
     /**

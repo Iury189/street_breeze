@@ -1,9 +1,9 @@
-@section('title') {{"Atualizar $master->nome"}} @endsection
+@section('title') {{"Visualizar $master->nome"}} @endsection
 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Atualizar ')}} {{ $master->nome }}
+            {{ __('Visualizar ')}} {{ $master->nome }}
         </h2>
     </x-slot>
     <div class="py-12">   
@@ -18,8 +18,7 @@
                     <br>
                     <!-- Validation Errors -->
                     <x-validation-errors class="mb-4" :errors="$errors" />
-                    <form action="{{ url("update-master/$master->id") }}" method="POST">
-                        @csrf @method('PATCH')
+                    <form action="#" method="POST">
                         <div>
                             <x-input-label for="nome" :value="__('Nome:')" />
                             <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome" value="{{ $master->nome }}" autofocus />
@@ -76,9 +75,6 @@
                             <x-text-input id="peso" class="block mt-1 w-full" type="text" name="peso" value="{{ $master->peso }}" autofocus onkeypress="$(this).mask('000.00', {reverse: true});"/>
                         </div>
                         <br>
-                        <div>
-                            <x-primary-button class="ml-3"><i class="fa fa-arrows-rotate"></i>&nbsp; {{ __('Atualizar') }} </x-primary-button> 
-                        </div>
                     </form>
                 </div>
             </div>

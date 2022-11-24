@@ -19,7 +19,7 @@ class UserPolicy
         //
     }
 
-    public function onlyAdmin(User $user){
+    public function showAdmin(User $user){
         return $user->role === 1;
     }
 }

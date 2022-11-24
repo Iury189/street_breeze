@@ -29,6 +29,7 @@ Route::controller(FighterController::class)->group(function() {
     Route::get('/fighter', 'index');
     Route::get('/add-fighter', 'create');
     Route::post('/add-fighter', 'store');
+    Route::get('/show-fighter/{id}', 'show');
     Route::get('/update-fighter/{id}', 'edit');
     Route::patch('/update-fighter/{id}', 'update');
     Route::delete('/delete-fighter/{id}', 'destroy');
@@ -38,6 +39,7 @@ Route::controller(MasterController::class)->group(function() {
     Route::get('/master', 'index');
     Route::get('/add-master', 'create');
     Route::post('/add-master', 'store');
+    Route::get('/show-master/{id}', 'show');
     Route::get('/update-master/{id}', 'edit');
     Route::patch('/update-master/{id}', 'update');
     Route::delete('/delete-master/{id}', 'destroy');
@@ -47,6 +49,7 @@ Route::controller(DojoController::class)->group(function() {
     Route::get('/dojo', 'index');
     Route::get('/add-dojo', 'create');
     Route::post('/add-dojo', 'store');
+    Route::get('/show-dojo/{id}', 'show');
     Route::get('/update-dojo/{id}', 'edit');
     Route::patch('/update-dojo/{id}', 'update');
     Route::delete('/delete-dojo/{id}', 'destroy');

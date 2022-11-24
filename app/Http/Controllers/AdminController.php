@@ -20,7 +20,7 @@ class AdminController extends Controller
     public function viewAdmin()
     {
         $user = User::paginate(5);
-        Gate::authorize('onlyAdmin', $user); // $this->authorize('onlyAdmin', $user); // Using Policies
+        Gate::authorize('onlyAdmin', $user);
         return view('admin.admin', compact('user'));
     }
 }

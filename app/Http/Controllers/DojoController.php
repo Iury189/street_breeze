@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\DojoRequest;
+use App\Models\User;
 use App\Loggings\LogDojo;
 use App\Models\DojoModel;
-use App\Models\LoggingModel;
-use App\Models\FighterModel;
 use App\Models\MasterModel;
+use App\Models\FighterModel;
+use App\Models\LoggingModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\DojoRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DojoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
+        $this->middleware('auth')->only(['index','create','store','show','edit','update','destroy']);
         $this->logDojo = new LogDojo();
         $this->loggingModel = new LoggingModel();
     }
@@ -69,7 +71,11 @@ class DojoController extends Controller
      */
     public function show($id)
     {
-        //
+        $dojo = DojoModel::find($id);
+        $this->authorize('showAdmin', Auth::user());
+        $fighter = FighterModel::get(['id','nome']);
+        $master = MasterModel::get(['id','nome']);
+        return view('dojo.show', compact(['dojo','fighter','master']));
     }
 
     /**
