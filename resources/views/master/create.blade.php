@@ -36,6 +36,7 @@
                                 <option {{ old('nacionalidade') == '' ? 'selected' : '' }} value="">{{ __('Escolha a nacionalidade') }}</option>
                                 <option {{ old('nacionalidade') == 'Alemanha' ? 'selected' : '' }} value="Alemanha">Alemanha</option>
                                 <option {{ old('nacionalidade') == 'Argentina' ? 'selected' : '' }} value="Argentina">Argentina</option>
+                                <option {{ old('nacionalidade') == 'Austrália' ? 'selected' : '' }} value="Austrália">Austrália</option>
                                 <option {{ old('nacionalidade') == 'Brasil' ? 'selected' : '' }} value="Brasil">Brasil</option>
                                 <option {{ old('nacionalidade') == 'Canadá' ? 'selected' : '' }} value="Canadá">Canadá</option>
                                 <option {{ old('nacionalidade') == 'China' ? 'selected' : '' }} value="China">China</option>

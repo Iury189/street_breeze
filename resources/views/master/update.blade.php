@@ -36,6 +36,7 @@
                                 <option {{ $master->nacionalidade == '' ? 'selected' : ''}} value="">{{ __('Escolha a nacionalidade') }}</option>
                                 <option {{ $master->nacionalidade == 'Alemanha' ? 'selected' : '' }} value="Alemanha">Alemanha</option>
                                 <option {{ $master->nacionalidade == 'Argentina' ? 'selected' : '' }} value="Argentina">Argentina</option>
+                                <option {{ $master->nacionalidade == 'Austrália' ? 'selected' : '' }} value="Austrália">Austrália</option>
                                 <option {{ $master->nacionalidade == 'Brasil' ? 'selected' : '' }} value="Brasil">Brasil</option>
                                 <option {{ $master->nacionalidade == 'Canadá' ? 'selected' : '' }} value="Canadá">Canadá</option>
                                 <option {{ $master->nacionalidade == 'China' ? 'selected' : '' }} value="China">China</option>

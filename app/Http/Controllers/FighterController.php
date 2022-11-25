@@ -14,7 +14,7 @@ class FighterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['index','create','store','show','edit','update','destroy']);
+        $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
         $this->logFighter = new LogFighter();
         $this->loggingModel = new LoggingModel();
     }

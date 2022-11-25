@@ -17,7 +17,7 @@ class DojoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['index','create','store','show','edit','update','destroy']);
+        $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
         $this->logDojo = new LogDojo();
         $this->loggingModel = new LoggingModel();
     }

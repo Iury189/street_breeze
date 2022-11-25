@@ -29,7 +29,7 @@ class FighterRequest extends FormRequest
             'nome' => 'required|max:30',
             'arte_marcial' => 'required|max:50',
             'nacionalidade' => ['required','max:30', Rule::in([
-                'Alemanha','Argentina','Brasil','Canadá','China','Coréia do Sul','Egito',
+                'Alemanha','Argentina','Austrália','Brasil','Canadá','China','Coréia do Sul','Egito',
                 'Espanha','Estados Unidos da América','França','Grécia','Índia','Inglaterra',
                 'Itália','Jamaica','Japão','México','Quênia','Rússia','Tailândia'])
             ],
@@ -49,7 +49,7 @@ class FighterRequest extends FormRequest
             'arte_marcial.max' => 'A arte marcial do Fighter deve conter no máximo 50 caracteres.',
             'nacionalidade.required' => 'É obrigatório definir a nacionalidade do Fighter.',
             'nacionalidade.max' => 'A nacionalidade do Fighter deve conter no máximo 30 caracteres.',
-            'nacionalidade.in' => 'A nacionalidade precisa ser uma das opções existentes abaixo.',
+            'nacionalidade.in' => 'A nacionalidade do Fighter precisa ser uma das opções disponíveis.',
             'genero.required' => 'É obrigatório definir o gênero do Fighter.',
             'genero.in' => 'O gênero do Fighter precisa ser Masculino ou Feminino.',
             'idade.required' => 'É obrigatório definir a idade do Fighter.',
