@@ -16,7 +16,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            {{ __('Pequeno projeto do acrônimo CRUD utilizando Laravel Breeze.')}}    
+                            {{ __('Pequena aplicação utilizando Laravel Breeze.')}}    
                         </h2>
                     </div>
                 </div>

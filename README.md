@@ -36,3 +36,6 @@
 
 ## Admin (Admin)
 ![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Admin.png?raw=true)
+
+## Change Password (User and Admin)
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/ChangePassword.png?raw=true)
