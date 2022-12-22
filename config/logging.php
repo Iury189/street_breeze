@@ -67,9 +67,15 @@ return [
             'driver' => 'single',
             // 'path' => storage_path('logs/logLogin.log'),
             'level' => 'debug',
-        ], 
+        ],
         // Log personalizado
         'logLogout' => [
+            'driver' => 'single',
+            // 'path' => storage_path('logs/logLogout.log'),
+            'level' => 'debug',
+        ],
+        // Log personalizado
+        'logUpdatePassword' => [
             'driver' => 'single',
             // 'path' => storage_path('logs/logLogout.log'),
             'level' => 'debug',
@@ -85,7 +91,7 @@ return [
             'driver' => 'single',
             // 'path' => storage_path('logs/logUpdateFighter.log'),
             'level' => 'debug',
-        ], 
+        ],
         // Log personalizado
         'logDeleteFighter' => [
             'driver' => 'single',
@@ -103,7 +109,7 @@ return [
             'driver' => 'single',
             // 'path' => storage_path('logs/logUpdateFighter.log'),
             'level' => 'debug',
-        ], 
+        ],
         // Log personalizado
         'logDeleteMaster' => [
             'driver' => 'single',
@@ -121,14 +127,14 @@ return [
             'driver' => 'single',
             // 'path' => storage_path('logs/logUpdateFighter.log'),
             'level' => 'debug',
-        ], 
+        ],
         // Log personalizado
         'logDeleteDojo' => [
             'driver' => 'single',
             // 'path' => storage_path('logs/logDeleteFighter.log'),
             'level' => 'debug',
         ],
-           
+
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),

@@ -13,7 +13,6 @@ class LoggingModel extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'descricao_log',
-        'metodo_operacao',
         'relacao',
     ];
 }

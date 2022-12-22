@@ -15,7 +15,7 @@ class AuthenticatedSessionController extends Controller
     public function __construct()
     {
         $this->logUser = new LogUser();
-        $this->loggingModel = new LoggingModel();    
+        $this->logModel = new LoggingModel();
     }
 
     /**
@@ -38,9 +38,9 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        $this->loggingModel->create([
-            'descricao_log' => $this->logUser->logLogin(), 
-            'metodo_operacao' => 'login',
+        $this->logModel->create([
+            'descricao_log' => $this->logUser->logLogin(),
+            'relacao' => '',
         ]);
         //return redirect()->intended(RouteServiceProvider::HOME);
         return redirect('/dashboard');
@@ -54,9 +54,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $this->loggingModel->create([
-            'descricao_log' => $this->logUser->logLogout(), 
-            'metodo_operacao' => 'logout',
+        $this->logModel->create([
+            'descricao_log' => $this->logUser->logLogout(),
+            'relacao' => '',
         ]);
         Auth::guard('web')->logout();
         $request->session()->invalidate();

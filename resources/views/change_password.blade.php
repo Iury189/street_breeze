@@ -9,8 +9,12 @@
                 {{ __('Alterar senha de ')}} {{ Str::words(Auth::user()->name, 1, '') }} (Administrador).
             @endif
         </h2>
+    </h2>
+        @if (Session::has('success-update-password'))
+            <x-success-store class="mb-4" :status="session('success-update-password')" />
+        @endif
     </x-slot>
-    <div class="py-12">   
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -22,11 +26,11 @@
                     <br>
                     <!-- Validation Errors -->
                     <x-validation-errors class="mb-4" :errors="$errors" />
-                    <form action="#" method="POST">
-                        @csrf 
+                    <form action="{{ url("update-password") }}" method="POST">
+                        @csrf
                         <div>
-                            <x-input-label for="old_password" :value="__('Senha antiga:')" />
-                            <x-text-input id="old_password" class="block mt-1 w-full" type="password" name="old_password" autofocus />
+                            <x-input-label for="current_password" :value="__('Senha atual:')" />
+                            <x-text-input id="current_password" class="block mt-1 w-full" type="password" name="current_password" autofocus />
                         </div>
                         <br>
                         <div>
@@ -36,11 +40,11 @@
                         <br>
                         <div>
                             <x-input-label for="confirm_new_password" :value="__('Confirmar nova senha:')" />
-                            <x-text-input id="confirm_new_password" class="block mt-1 w-full" type="text" name="confirm_new_password" autofocus />
+                            <x-text-input id="confirm_new_password" class="block mt-1 w-full" type="password" name="confirm_new_password" autofocus />
                         </div>
                         <br>
                         <div>
-                            <x-primary-button class="ml-3"><i class="fa fa-plus"></i>&nbsp; {{ __('Cadastrar') }} </x-primary-button> 
+                            <x-primary-button class="ml-3"><i class="fa fa-plus"></i>&nbsp; {{ __('Cadastrar') }} </x-primary-button>
                         </div>
                     </form>
                 </div>

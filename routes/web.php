@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FighterController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\DojoController;
+use App\Http\Controllers\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::get('/dashboard', function () {
 Route::get('/change_password', function () {
     return view('change_password');
 })->middleware(['auth'])->name('change_password');
+
+Route::controller(ChangePasswordController::class)->group(function(){
+    Route::post('/update-password', 'updatePassword');
+});
 
 Route::controller(FighterController::class)->group(function() {
     Route::get('/fighter', 'index');

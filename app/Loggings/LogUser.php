@@ -11,33 +11,34 @@ class LogUser {
 
     public function logLogin()
     {
-        $data_user = Carbon::now()->format('d/m/Y H:i:s');
+        $data = Carbon::now()->format('d/m/Y H:i:s');
         $nome_user = Auth::user()->name;
         $tipo_user = Auth::user()->role;
         $ip_user = Request::ip();
-        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user realizou login utilizando IP $ip_user em $data_user." : "Usuário(a) $nome_user realizou login utilizando IP $ip_user em $data_user.";
+        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user realizou login utilizando IP $ip_user em $data." : "Usuário(a) $nome_user realizou login utilizando IP $ip_user em $data.";
         Log::channel('logLogin')->info($mensagem);
         return $mensagem;
     }
 
     public function logLogout()
     {
-        $data_user = Carbon::now()->format('d/m/Y H:i:s');
+        $data = Carbon::now()->format('d/m/Y H:i:s');
         $nome_user = Auth::user()->name;
         $tipo_user = Auth::user()->role;
         $ip_user = Request::ip();
-        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user realizou logout utilizando IP $ip_user em $data_user." : "Usuário(a) $nome_user realizou logout utilizando IP $ip_user em $data_user.";
+        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user realizou logout utilizando IP $ip_user em $data." : "Usuário(a) $nome_user realizou logout utilizando IP $ip_user em $data.";
         Log::channel('logLogout')->info($mensagem);
         return $mensagem;
     }
 
-    public function logAdminPage()
+    public function logUpdatePassword()
     {
-        $data_adm = Carbon::now()->format('d/m/Y H:i:s');
-        $nome_adm = Auth::user()->name;
-        $ip_adm = Request::ip();
-        $mensagem = "Administrador(a) $nome_adm acessou a página exclusiva de adminstradores utilizando IP $ip_adm no seguinte horário: $data_adm.";
-        Log::channel('logAdminPage')->info($mensagem);
+        $data = Carbon::now()->format('d/m/Y H:i:s');
+        $nome_user = Auth::user()->name;
+        $tipo_user = Auth::user()->role;
+        $ip_user = Request::ip();
+        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user alterou sua senha utilizando IP $ip_user em $data." : "Usuário(a) $nome_user alterou sua senha utilizando IP $ip_user em $data.";
+        Log::channel('logUpdatePassword')->info($mensagem);
         return $mensagem;
     }
 }

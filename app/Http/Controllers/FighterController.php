@@ -7,7 +7,6 @@ use App\Models\FighterModel;
 use App\Models\LoggingModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\FighterRequest;
 
 class FighterController extends Controller
@@ -16,7 +15,7 @@ class FighterController extends Controller
     {
         $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
         $this->logFighter = new LogFighter();
-        $this->loggingModel = new LoggingModel();
+        $this->logModel = new LoggingModel();
     }
     /**
      * Display a listing of the resource.
@@ -50,12 +49,11 @@ class FighterController extends Controller
     {
         $validacoes = $request->validated();
         FighterModel::create($validacoes);
-        $this->loggingModel->create([
-            'descricao_log' => $this->logFighter->logCreateFighter(), 
-            'metodo_operacao' => 'store',
+        $this->logModel->create([
+            'descricao_log' => $this->logFighter->logCreateFighter(),
             'relacao' => "Fighter {$validacoes['nome']} agora está presente no sistema.",
         ]);
-        return redirect('fighter')->with('success-store','Fighter está presente no sistema.');   
+        return redirect('fighter')->with('success-store',"{$validacoes['nome']} está presente no sistema.");
     }
 
     /**
@@ -66,9 +64,7 @@ class FighterController extends Controller
      */
     public function show($id)
     {
-        $fighter = FighterModel::find($id);
-        $this->authorize('showAdmin', Auth::user());
-        return view('fighter.show', compact('fighter')); 
+        //
     }
 
     /**
@@ -94,13 +90,11 @@ class FighterController extends Controller
     {
         $validacoes = $request->validated();
         FighterModel::where('id',$id)->update($validacoes);
-        $id_fighter = DB::table('fighters')->where('id','=',$id)->value('id');
-        $this->loggingModel->create([
-            'descricao_log' => $this->logFighter->logUpdateFighter(), 
-            'metodo_operacao' => 'update',
-            'relacao' => "Fighter ID $id_fighter obteve atualizações em suas informações.",
+        $this->logModel->create([
+            'descricao_log' => $this->logFighter->logUpdateFighter(),
+            'relacao' => "Fighter {$validacoes['nome']} obteve atualizações em suas informações.",
         ]);
-        return redirect('fighter')->with('success-update','Fighter obteve atualizações em suas informações.');  
+        return redirect('fighter')->with('success-update',"{$validacoes['nome']} obteve atualizações em suas informações.");
     }
 
     /**
@@ -111,13 +105,12 @@ class FighterController extends Controller
      */
     public function destroy($id)
     {
-        $id_fighter = DB::table('fighters')->where('id','=',$id)->value('id');
-        $this->loggingModel->create([
-            'descricao_log' => $this->logFighter->logDeleteFighter(), 
-            'metodo_operacao' => 'destroy',
-            'relacao' => "Fighter ID $id_fighter foi excluído(a) do sistema.",
+        $nome = DB::table('fighters')->where('id','=',$id)->value('nome');
+        $this->logModel->create([
+            'descricao_log' => $this->logFighter->logDeleteFighter(),
+            'relacao' => "Fighter $nome não está mais presente no sistema.",
         ]);
         FighterModel::where('id',$id)->delete();
-        return redirect('fighter')->with('success-destroy','Fighter não está mais presente no sistema.');    
+        return redirect('fighter')->with('success-destroy',"$nome não está mais presente no sistema.");
     }
 }

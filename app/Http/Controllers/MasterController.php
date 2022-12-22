@@ -8,7 +8,6 @@ use App\Models\LoggingModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MasterRequest;
-use Illuminate\Support\Facades\Auth;
 
 class MasterController extends Controller
 {
@@ -16,7 +15,7 @@ class MasterController extends Controller
     {
         $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
         $this->logMaster = new LogMaster();
-        $this->loggingModel = new LoggingModel();
+        $this->logModel = new LoggingModel();
     }
     /**
      * Display a listing of the resource.
@@ -50,12 +49,11 @@ class MasterController extends Controller
     {
         $validacoes = $request->validated();
         MasterModel::create($validacoes);
-        $this->loggingModel->create([
-            'descricao_log' => $this->logMaster->logCreateMaster(), 
-            'metodo_operacao' => 'store',
+        $this->logModel->create([
+            'descricao_log' => $this->logMaster->logCreateMaster(),
             'relacao' => "Master {$validacoes['nome']} agora está presente no sistema.",
         ]);
-        return redirect('master')->with('success-store','Master está presente no sistema.');  
+        return redirect('master')->with('success-store',"{$validacoes['nome']} está presente no sistema.");
     }
 
     /**
@@ -66,9 +64,7 @@ class MasterController extends Controller
      */
     public function show($id)
     {
-        $master = MasterModel::find($id);
-        $this->authorize('showAdmin', Auth::user());
-        return view('master.show', compact('master')); 
+        //
     }
 
     /**
@@ -94,13 +90,11 @@ class MasterController extends Controller
     {
         $validacoes = $request->validated();
         MasterModel::where('id',$id)->update($validacoes);
-        $id_master = DB::table('masters')->where('id','=',$id)->value('id');
-        $this->loggingModel->create([
-            'descricao_log' => $this->logMaster->logUpdateMaster(), 
-            'metodo_operacao' => 'update',
-            'relacao' => "Master ID $id_master obteve atualizações em suas informações.",
+        $this->logModel->create([
+            'descricao_log' => $this->logMaster->logUpdateMaster(),
+            'relacao' => "Master {$validacoes['nome']} obteve atualizações em suas informações.",
         ]);
-        return redirect('master')->with('success-update','Master obteve atualizações em suas informações.');  
+        return redirect('master')->with('success-update',"{$validacoes['nome']} obteve atualizações em suas informações.");
     }
 
     /**
@@ -111,13 +105,12 @@ class MasterController extends Controller
      */
     public function destroy($id)
     {
-        $id_master = DB::table('masters')->where('id','=',$id)->value('id');
-        $this->loggingModel->create([
-            'descricao_log' => $this->logMaster->logDeleteMaster(), 
-            'metodo_operacao' => 'destroy',
-            'relacao' => "Master ID $id_master foi excluído(a) do sistema.",
+        $nome = DB::table('masters')->where('id','=',$id)->value('nome');
+        $this->logModel->create([
+            'descricao_log' => $this->logMaster->logDeleteMaster(),
+            'relacao' => "Master $nome não está mais presente no sistema.",
         ]);
         MasterModel::where('id',$id)->delete();
-        return redirect('master')->with('success-destroy','Master não está mais presente no sistema.');    
+        return redirect('master')->with('success-destroy',"$nome não está mais presente no sistema.");
     }
 }

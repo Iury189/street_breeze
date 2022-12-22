@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Loggings\LogDojo;
 use App\Models\DojoModel;
 use App\Models\MasterModel;
@@ -11,7 +10,6 @@ use App\Models\LoggingModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\DojoRequest;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class DojoController extends Controller
 {
@@ -19,7 +17,7 @@ class DojoController extends Controller
     {
         $this->middleware('auth')->only(['index','create','store','edit','update','destroy']);
         $this->logDojo = new LogDojo();
-        $this->loggingModel = new LoggingModel();
+        $this->logModel = new LoggingModel();
     }
     /**
      * Display a listing of the resource.
@@ -55,12 +53,11 @@ class DojoController extends Controller
     {
         $validacoes = $request->validated();
         DojoModel::create($validacoes);
-        $this->loggingModel->create([
-            'descricao_log' => $this->logDojo->logCreateDojo(), 
-            'metodo_operacao' => 'store',
+        $this->logModel->create([
+            'descricao_log' => $this->logDojo->logCreateDojo(),
             'relacao' => "Um novo dojô agora está presente no sistema.",
         ]);
-        return redirect('dojo')->with('success-store','Dojo está presente no sistema.');  
+        return redirect('dojo')->with('success-store',"Dojo está presente no sistema.");
     }
 
     /**
@@ -71,11 +68,7 @@ class DojoController extends Controller
      */
     public function show($id)
     {
-        $dojo = DojoModel::find($id);
-        $this->authorize('showAdmin', Auth::user());
-        $fighter = FighterModel::get(['id','nome']);
-        $master = MasterModel::get(['id','nome']);
-        return view('dojo.show', compact(['dojo','fighter','master']));
+        //
     }
 
     /**
@@ -103,13 +96,11 @@ class DojoController extends Controller
     {
         $validacoes = $request->validated();
         DojoModel::where('id',$id)->update($validacoes);
-        $id_dojo = DB::table('dojos')->where('id','=',$id)->value('id');
-        $this->loggingModel->create([
-            'descricao_log' => $this->logDojo->logUpdateDojo(), 
-            'metodo_operacao' => 'update',
-            'relacao' => "Dojô ID $id_dojo obteve atualizações em suas informações.",
+        $this->logModel->create([
+            'descricao_log' => $this->logDojo->logUpdateDojo(),
+            'relacao' => "Dojô ID N°$id obteve atualizações em suas informações.",
         ]);
-        return redirect('dojo')->with('success-update','O dojo obteve atualizações em suas informações.');  
+        return redirect('dojo')->with('success-update',"Dojô ID N°$id obteve atualizações em suas informações.");
     }
 
     /**
@@ -120,13 +111,12 @@ class DojoController extends Controller
      */
     public function destroy($id)
     {
-        $id_dojo = DB::table('dojos')->where('id','=',$id)->value('id');
-        $this->loggingModel->create([
-            'descricao_log' => $this->logDojo->logDeleteDojo(), 
-            'metodo_operacao' => 'destroy',
-            'relacao' => "Dojô ID $id_dojo foi excluído(a) do sistema.",
+        $id = DB::table('dojos')->where('id','=',$id)->value('id');
+        $this->logModel->create([
+            'descricao_log' => $this->logDojo->logDeleteDojo(),
+            'relacao' => "Dojô ID N°$id não está mais presente no sistema.",
         ]);
         DojoModel::where('id',$id)->delete();
-        return redirect('dojo')->with('success-destroy','Dojo não está mais presente no sistema.');
+        return redirect('dojo')->with('success-destroy',"Dojô ID N°$id não está mais presente no sistema.");
     }
 }
