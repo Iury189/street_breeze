@@ -23,7 +23,7 @@ class ChangePasswordController extends Controller
     {
         $user = Auth::user()->name;
         $validacoes = $request->validated();
-        User::whereId(Auth::user()->id)->update(['password'=> Hash::make($validacoes['new_password'])]);
+        User::whereId(Auth::user()->id)->update(['password' => Hash::make($validacoes['new_password'])]);
         $this->logModel->create([
             'descricao_log' => $this->logUser->logUpdatePassword(),
             'relacao' => '',

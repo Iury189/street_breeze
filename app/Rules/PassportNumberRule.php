@@ -35,6 +35,6 @@ class PassportNumberRule implements Rule
      */
     public function message()
     {
-        return 'O número de passaporte não está valido.';
+        return 'O número de passaporte não é valido.';
     }
 }

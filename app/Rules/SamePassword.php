@@ -3,9 +3,8 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
 
-class MatchOldPassword implements Rule
+class SamePassword implements Rule
 {
     /**
      * Create a new rule instance.
@@ -26,7 +25,7 @@ class MatchOldPassword implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Hash::check($value, auth()->user()->password);
+        return $value !== request()->input('new_password');
     }
 
     /**
@@ -36,6 +35,6 @@ class MatchOldPassword implements Rule
      */
     public function message()
     {
-        return 'A senha atual não é a mesma que está registrada no banco de dados.';
+        return 'A nova senha não pode ser igual a antiga.';
     }
 }
