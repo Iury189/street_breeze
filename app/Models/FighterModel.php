@@ -19,6 +19,7 @@ class FighterModel extends Model
         'genero',
         'idade',
         'altura',
-        'peso'
+        'peso',
+        'passaporte',
     ];
 }

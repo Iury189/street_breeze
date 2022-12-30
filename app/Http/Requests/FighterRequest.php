@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Rules\PassportNumberRule;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 
 class FighterRequest extends FormRequest
 {
@@ -37,6 +38,10 @@ class FighterRequest extends FormRequest
             'idade' => 'required|integer|min:18|max:65',
             'altura' => 'required|numeric|min:1.50|max:2.50',
             'peso' => 'required|numeric|min:50.00|max:150.00',
+            'passaporte' => ['required','size:8',
+            Rule::unique('fighters','passaporte')->ignore($this->id),
+            Rule::unique('masters','passaporte')->ignore($this->id),
+            new PassportNumberRule],
         ];
     }
     // Mensagens personalizadas
@@ -64,6 +69,9 @@ class FighterRequest extends FormRequest
             'peso.numeric' => 'O peso do Fighter precisa ser um valor numérico.',
             'peso.min' => 'O peso mínimo do Fighter deve ser de 50.00 kg.',
             'peso.max' => 'O peso máximo do Fighter deve ser de 150.00 kg.',
+            'passaporte.required' => 'É obrigatório definir o passaporte do Fighter.',
+            'passaporte.size' => 'O número de passaporte do Fighter deve conter 8 caracteres.',
+            'passaporte.unique' => 'Esse número de passaporte já está registrado, não é aceito valores repetidos de passaporte.',
         ];
     }
 }

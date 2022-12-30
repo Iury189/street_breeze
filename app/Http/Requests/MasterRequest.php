@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\PassportNumberRule;
 
 class MasterRequest extends FormRequest
 {
@@ -37,6 +38,10 @@ class MasterRequest extends FormRequest
             'idade' => 'required|integer|min:18|max:65',
             'altura' => 'required|numeric|min:1.50|max:2.50',
             'peso' => 'required|numeric|min:50.00|max:150.00',
+            'passaporte' => ['required','size:8',
+            Rule::unique('masters','passaporte')->ignore($this->id),
+            Rule::unique('fighters','passaporte')->ignore($this->id),
+            new PassportNumberRule],
         ];
     }
     // Mensagens personalizadas
@@ -64,6 +69,9 @@ class MasterRequest extends FormRequest
             'peso.numeric' => 'O peso do Master precisa ser um valor numérico.',
             'peso.min' => 'O peso mínimo do Master deve ser de 50.00 kg.',
             'peso.max' => 'O peso máximo do Master deve ser de 150.00 kg.',
+            'passaporte.required' => 'É obrigatório definir o passaporte do Master.',
+            'passaporte.size' => 'O número de passaporte do Master deve conter 8 caracteres.',
+            'passaporte.unique' => 'Esse número de passaporte já está registrado, não é aceito valores repetidos de passaporte.',
         ];
     }
 }

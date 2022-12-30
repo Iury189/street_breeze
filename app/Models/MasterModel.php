@@ -19,6 +19,7 @@ class MasterModel extends Model
         'genero',
         'idade',
         'altura',
-        'peso'
+        'peso',
+        'passaporte',
     ];
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Loggings\LogMaster;
 use App\Models\MasterModel;
 use App\Models\LoggingModel;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MasterRequest;
@@ -48,6 +49,7 @@ class MasterController extends Controller
     public function store(MasterRequest $request)
     {
         $validacoes = $request->validated();
+        $validacoes['passaporte'] = Str::upper($request->passaporte);
         MasterModel::create($validacoes);
         $this->logModel->create([
             'descricao_log' => $this->logMaster->logCreateMaster(),
@@ -89,6 +91,7 @@ class MasterController extends Controller
     public function update(MasterRequest $request, $id)
     {
         $validacoes = $request->validated();
+        $validacoes['passaporte'] = Str::upper($request->passaporte);
         MasterModel::where('id',$id)->update($validacoes);
         $this->logModel->create([
             'descricao_log' => $this->logMaster->logUpdateMaster(),

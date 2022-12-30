@@ -6,7 +6,7 @@
             {{ __('Atualizar ')}} {{ $master->nome }}
         </h2>
     </x-slot>
-    <div class="py-12">   
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -83,7 +83,12 @@
                         </div>
                         <br>
                         <div>
-                            <x-primary-button class="ml-3"><i class="fa fa-arrows-rotate"></i>&nbsp; {{ __('Atualizar') }} </x-primary-button> 
+                            <x-input-label for="passaporte" :value="__('Passaporte:')" />
+                            <x-text-input id="passaporte" class="block mt-1 w-full" type="text" name="passaporte" class="uppercase" value="{{ $master->passaporte }}" autofocus onkeypress="$(this).mask('SS000000')"/>
+                        </div>
+                        <br>
+                        <div>
+                            <x-primary-button class="ml-3"><i class="fa fa-arrows-rotate"></i>&nbsp; {{ __('Atualizar') }} </x-primary-button>
                         </div>
                     </form>
                 </div>

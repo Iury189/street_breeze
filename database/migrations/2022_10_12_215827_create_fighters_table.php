@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('idade');
             $table->decimal('altura', 3,2);
             $table->decimal('peso', 5,2);
+            $table->string('passaporte', 8);
         });
     }
 

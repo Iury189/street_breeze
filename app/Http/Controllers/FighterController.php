@@ -6,6 +6,7 @@ use App\Loggings\LogFighter;
 use App\Models\FighterModel;
 use App\Models\LoggingModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\FighterRequest;
 
@@ -48,6 +49,7 @@ class FighterController extends Controller
     public function store(FighterRequest $request)
     {
         $validacoes = $request->validated();
+        $validacoes['passaporte'] = Str::upper($request->passaporte);
         FighterModel::create($validacoes);
         $this->logModel->create([
             'descricao_log' => $this->logFighter->logCreateFighter(),
@@ -89,6 +91,7 @@ class FighterController extends Controller
     public function update(FighterRequest $request, $id)
     {
         $validacoes = $request->validated();
+        $validacoes['passaporte'] = Str::upper($request->passaporte);
         FighterModel::where('id',$id)->update($validacoes);
         $this->logModel->create([
             'descricao_log' => $this->logFighter->logUpdateFighter(),
