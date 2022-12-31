@@ -43,7 +43,7 @@
                                 <option {{ old('nacionalidade') == 'Coréia do Sul' ? 'selected' : '' }} value="Coréia do Sul">Coréia do Sul</option>
                                 <option {{ old('nacionalidade') == 'Egito' ? 'selected' : '' }} value="Egito">Egito</option>
                                 <option {{ old('nacionalidade') == 'Espanha' ? 'selected' : '' }} value="Espanha">Espanha</option>
-                                <option {{ old('nacionalidade') == 'Estados Unidos da América' ? 'selected' : '' }} value="Estados Unidos da América">Estados Unidos da América</option>
+                                <option {{ old('nacionalidade') == 'EUA' ? 'selected' : '' }} value="EUA">EUA</option>
                                 <option {{ old('nacionalidade') == 'França' ? 'selected' : '' }} value="França">França</option>
                                 <option {{ old('nacionalidade') == 'Grécia' ? 'selected' : '' }} value="Grécia">Grécia</option>
                                 <option {{ old('nacionalidade') == 'Índia' ? 'selected' : '' }} value="Índia">Índia</option>
@@ -54,6 +54,8 @@
                                 <option {{ old('nacionalidade') == 'México' ? 'selected' : '' }} value="México">México</option>
                                 <option {{ old('nacionalidade') == 'Quênia' ? 'selected' : '' }} value="Quênia">Quênia</option>
                                 <option {{ old('nacionalidade') == 'Rússia' ? 'selected' : '' }} value="Rússia">Rússia</option>
+                                <option {{ old('nacionalidade') == 'Suíça' ? 'selected' : '' }} value="Suíça">Suíça</option>
+                                <option {{ old('nacionalidade') == 'Suécia' ? 'selected' : '' }} value="Suécia">Suécia</option>
                                 <option {{ old('nacionalidade') == 'Tailândia' ? 'selected' : '' }} value="Tailândia">Tailândia</option>
                             </x-select>
                         </div>

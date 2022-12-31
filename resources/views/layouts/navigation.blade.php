@@ -47,9 +47,9 @@
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                             <div>
                                 @if (Auth::user()->role === 1)
-                                    <i class="fa-solid fa-user-tie"></i>&nbsp; {{ Str::words(Auth::user()->name, 1, '') }}    
+                                    <i class="fa-solid fa-user-tie"></i>&nbsp; {{ Str::words(Auth::user()->name, 1, '') }}
                                 @else
-                                    <i class="fa-solid fa-user"></i>&nbsp; {{ Str::words(Auth::user()->name, 1, '') }} 
+                                    <i class="fa-solid fa-user"></i>&nbsp; {{ Str::words(Auth::user()->name, 1, '') }}
                                 @endif
                             </div>
                             <div class="ml-1">
@@ -64,7 +64,7 @@
                         <x-dropdown-link :href="url('change_password')">
                         <i class="fa fa-gear"></i>&nbsp;{{ __('Change Password') }}
                         </x-dropdown-link>
-                        
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

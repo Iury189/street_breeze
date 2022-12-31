@@ -31,8 +31,8 @@ class MasterRequest extends FormRequest
             'arte_marcial' => 'required|max:50',
             'nacionalidade' => ['required','max:30', Rule::in([
                 'Alemanha','Argentina','Austrália','Brasil','Canadá','China','Coréia do Sul','Egito',
-                'Espanha','Estados Unidos da América','França','Grécia','Índia','Inglaterra',
-                'Itália','Jamaica','Japão','México','Quênia','Rússia','Tailândia'])
+                'Espanha','EUA','França','Grécia','Índia','Inglaterra',
+                'Itália','Jamaica','Japão','México','Quênia','Rússia','Suíça','Suécia','Tailândia'])
             ],
             'genero' => ['required', Rule::in(['Masculino','Feminino'])],
             'idade' => 'required|integer|min:18|max:65',

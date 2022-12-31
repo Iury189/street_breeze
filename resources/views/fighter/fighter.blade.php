@@ -55,7 +55,7 @@
                               <td title="{{ $sf->idade }} "> {{ $sf->idade }} </td>
                               <td title="{{ $sf->altura }} m"> {{ $sf->altura }} m </td>
                               <td title="{{ $sf->peso }} kg"> {{ $sf->peso }} kg </td>
-                              <td title="{{ $sf->passaporte }}"> {{ $sf->passaporte }}</td>
+                              <td title="{{ Str::mask($sf->passaporte,'*',2,-2) }}"> {{ Str::mask($sf->passaporte,'*',2,-2) }}</td>
                               <td>
                                 <form action="{{ url("delete-fighter/$sf->id") }}" method="POST">
                                   <a href="{{ url("update-fighter/$sf->id") }}" class="btn btn-primary" title="Atualizar {{ $sf->nome }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>

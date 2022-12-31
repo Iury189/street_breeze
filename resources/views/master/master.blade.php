@@ -55,7 +55,7 @@
                               <td title="{{ $msf->idade }} "> {{ $msf->idade }} </td>
                               <td title="{{ $msf->altura }} m"> {{ $msf->altura }} m </td>
                               <td title="{{ $msf->peso }} kg"> {{ $msf->peso }} kg </td>
-                              <td title="{{ $msf->passaporte }}"> {{ $msf->passaporte }} </td>
+                              <td title="{{ Str::mask($msf->passaporte,'*',2,-2) }}"> {{ Str::mask($msf->passaporte,'*',2,-2) }}</td>
                               <td>
                                 <form action="{{ url("delete-master/$msf->id") }}" method="POST">
                                   <a href="{{ url("update-master/$msf->id") }}" class="btn btn-primary" title="Atualizar {{ $msf->nome }}"><i class="fa fa-arrows-rotate"></i>&nbsp;Atualizar</a>
