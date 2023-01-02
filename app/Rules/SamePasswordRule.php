@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class SamePassword implements Rule
+class SamePasswordRule implements Rule
 {
     /**
      * Create a new rule instance.

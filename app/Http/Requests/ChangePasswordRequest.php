@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\SamePassword;
-use App\Rules\MatchOldPassword;
+use App\Rules\MatchOldPasswordRule;
+use App\Rules\SamePasswordRule;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,7 +27,7 @@ class ChangePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'current_password' => ['required', new MatchOldPassword, new SamePassword],
+            'current_password' => ['required', new MatchOldPasswordRule, new SamePasswordRule],
             'new_password' => ['required', Password::defaults()],
             'confirm_new_password' => 'required|same:new_password',
         ];

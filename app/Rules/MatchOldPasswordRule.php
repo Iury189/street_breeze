@@ -5,7 +5,7 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
-class MatchOldPassword implements Rule
+class MatchOldPasswordRule implements Rule
 {
     /**
      * Create a new rule instance.
