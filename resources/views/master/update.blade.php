@@ -41,11 +41,14 @@
                                 <option {{ $master->nacionalidade == 'Canadá' ? 'selected' : '' }} value="Canadá">Canadá</option>
                                 <option {{ $master->nacionalidade == 'China' ? 'selected' : '' }} value="China">China</option>
                                 <option {{ $master->nacionalidade == 'Coréia do Sul' ? 'selected' : '' }} value="Coréia do Sul">Coréia do Sul</option>
+                                <option {{ $master->nacionalidade == 'Dinamarca' ? 'selected' : '' }} value="Dinamarca">Dinamarca</option>
                                 <option {{ $master->nacionalidade == 'Egito' ? 'selected' : '' }} value="Egito">Egito</option>
                                 <option {{ $master->nacionalidade == 'Espanha' ? 'selected' : '' }} value="Espanha">Espanha</option>
+                                <option {{ $master->nacionalidade == 'Escócia' ? 'selected' : '' }} value="Escócia">Escócia</option>
                                 <option {{ $master->nacionalidade == 'EUA' ? 'selected' : '' }} value="EUA">EUA</option>
                                 <option {{ $master->nacionalidade == 'França' ? 'selected' : '' }} value="França">França</option>
                                 <option {{ $master->nacionalidade == 'Grécia' ? 'selected' : '' }} value="Grécia">Grécia</option>
+                                <option {{ $master->nacionalidade == 'Hungria' ? 'selected' : '' }} value="Hungria">Hungria</option>
                                 <option {{ $master->nacionalidade == 'Índia' ? 'selected' : '' }} value="Índia">Índia</option>
                                 <option {{ $master->nacionalidade == 'Inglaterra' ? 'selected' : '' }} value="Inglaterra">Inglaterra</option>
                                 <option {{ $master->nacionalidade == 'Itália' ? 'selected' : '' }} value="Itália">Itália</option>

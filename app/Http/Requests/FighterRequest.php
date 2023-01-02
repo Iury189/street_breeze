@@ -30,11 +30,11 @@ class FighterRequest extends FormRequest
             'nome' => 'required|max:30',
             'arte_marcial' => 'required|max:50',
             'nacionalidade' => ['required','max:30', Rule::in([
-                'Alemanha','Argentina','Austrália','Brasil','Canadá','China','Coréia do Sul','Egito',
-                'Espanha','EUA','França','Grécia','Índia','Inglaterra',
+                'Alemanha','Argentina','Austrália','Brasil','Canadá','China','Coréia do Sul','Dinamarca',
+                'Escócia','Egito','Espanha','EUA','França','Grécia','Hungria','Índia','Inglaterra',
                 'Itália','Jamaica','Japão','México','Quênia','Rússia','Suíça','Suécia','Tailândia'])
             ],
-            'genero' => ['required', Rule::in(['Masculino', 'Feminino'])],
+            'genero' => ['required', Rule::in(['Masculino','Feminino'])],
             'idade' => 'required|integer|min:18|max:65',
             'altura' => 'required|numeric|min:1.50|max:2.50',
             'peso' => 'required|numeric|min:50.00|max:150.00',
