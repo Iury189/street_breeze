@@ -9,12 +9,11 @@
                 <nav class="navbar navbar-default">
                 </nav>
                 <br>
-                  <table class="table table-hover">
+                    <table class="table table-hover">
                       <thead>
                         <tr>
                           <th title="ID"> ID </th>
                           <th title="Nome"> Nome </th>
-                          <th title="Master"> E-mail </th>
                           <th title="Nível de acesso"> Nível de acesso </th>
                         </tr>
                       </thead>
@@ -23,7 +22,6 @@
                           <tr>
                             <td title="{{ $u->id }}"> {{ $u->id }} </td>
                             <td title="{{ $u->name }}"> {{ $u->name }} </td>
-                            <td title="{{ Str::mask($u->email,'*',1,-4) }}"> {{ Str::mask($u->email,'*',1,-4) }} </td>
                             <td title="{{ $u->role == 0 ? "User" : "Administrator" }}"> {{ $u->role == 0 ? "User" : "Administrator" }} </td>
                           </tr>
                         @endforeach

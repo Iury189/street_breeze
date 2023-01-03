@@ -36,6 +36,6 @@ class MatchOldPasswordRule implements Rule
      */
     public function message()
     {
-        return 'A senha atual não é a mesma que está registrada no banco de dados.';
+        return 'Não foi encontrada sua senha atual no banco de dados.';
     }
 }
