@@ -38,7 +38,9 @@ class DojoController extends Controller
      */
     public function create()
     {
-        $fighter = FighterModel::get(['id','nome']);
+        $fighter = DB::table('fighters')->select('fighters.id', 'fighters.nome')
+        ->join('dojos', 'fighters.id', '=', 'dojos.fighter_id', 'LEFT OUTER')
+        ->whereNull('dojos.fighter_id')->get();
         $master = MasterModel::get(['id','nome']);
         return view('dojo.create', compact(['fighter','master']));
     }
@@ -52,12 +54,12 @@ class DojoController extends Controller
     public function store(DojoRequest $request)
     {
         $validacoes = $request->validated();
-        DojoModel::create($validacoes);
+        $dojo = DojoModel::create($validacoes);
         $this->logModel->create([
             'descricao_log' => $this->logDojo->logCreateDojo(),
-            'relacao' => "Um novo dojô agora está presente no sistema.",
+            'relacao' => "Dojô ID N°$dojo->id está presente no sistema.",
         ]);
-        return redirect('dojo')->with('success-store',"Dojo está presente no sistema.");
+        return redirect('dojo')->with('success-store',"Dojô ID N°$dojo->id está presente no sistema.");
     }
 
     /**
@@ -80,7 +82,9 @@ class DojoController extends Controller
     public function edit($id)
     {
         $dojo = DojoModel::find($id);
-        $fighter = FighterModel::get(['id','nome']);
+        $fighter = DB::table('fighters')->select('fighters.id', 'fighters.nome')
+        ->join('dojos', 'fighters.id', '=', 'dojos.fighter_id', 'LEFT OUTER')
+        ->whereNull('dojos.fighter_id')->get();
         $master = MasterModel::get(['id','nome']);
         return view('dojo.update', compact(['dojo','fighter','master']));
     }
@@ -111,7 +115,6 @@ class DojoController extends Controller
      */
     public function destroy($id)
     {
-        $id = DB::table('dojos')->where('id','=',$id)->value('id');
         $this->logModel->create([
             'descricao_log' => $this->logDojo->logDeleteDojo(),
             'relacao' => "Dojô ID N°$id não está mais presente no sistema.",

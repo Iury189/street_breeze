@@ -39,8 +39,8 @@ class MasterRequest extends FormRequest
             'altura' => 'required|numeric|min:1.50|max:2.50',
             'peso' => 'required|numeric|min:50.00|max:150.00',
             'passaporte' => ['required','size:8',
-            Rule::unique('masters','passaporte')->ignore($this->id),
             Rule::unique('fighters','passaporte')->ignore($this->id),
+            Rule::unique('masters','passaporte')->ignore($this->id),
             new PassportNumberRule],
         ];
     }
