@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Loggings\LogDojo;
 use App\Models\DojoModel;
-use App\Models\MasterModel;
-use App\Models\FighterModel;
 use App\Models\LoggingModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\DojoRequest;
@@ -38,10 +36,10 @@ class DojoController extends Controller
      */
     public function create()
     {
-        $fighter = DB::table('fighters')->select('fighters.id', 'fighters.nome')
-        ->join('dojos', 'fighters.id', '=', 'dojos.fighter_id', 'LEFT OUTER')
+        $fighter = DB::table('fighters')->select('fighters.id','fighters.nome')
+        ->join('dojos','fighters.id','=','dojos.fighter_id','LEFT OUTER')
         ->whereNull('dojos.fighter_id')->get();
-        $master = MasterModel::get(['id','nome']);
+        $master = DB::table('masters')->select('id','nome')->get();
         return view('dojo.create', compact(['fighter','master']));
     }
 
@@ -82,10 +80,10 @@ class DojoController extends Controller
     public function edit($id)
     {
         $dojo = DojoModel::find($id);
-        $fighter = DB::table('fighters')->select('fighters.id', 'fighters.nome')
-        ->join('dojos', 'fighters.id', '=', 'dojos.fighter_id', 'LEFT OUTER')
+        $fighter = DB::table('fighters')->select('fighters.id','fighters.nome')
+        ->join('dojos','fighters.id','=','dojos.fighter_id','LEFT OUTER')
         ->whereNull('dojos.fighter_id')->get();
-        $master = MasterModel::get(['id','nome']);
+        $master = DB::table('masters')->select('id','nome')->get();
         return view('dojo.update', compact(['dojo','fighter','master']));
     }
 
