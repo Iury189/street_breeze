@@ -35,6 +35,6 @@ class SamePasswordRule implements Rule
      */
     public function message()
     {
-        return 'Não é possível alterar sua senha atual pela mesma senha.';
+        return 'Não é possível alterar sua senha atual utilizando a mesma senha.';
     }
 }

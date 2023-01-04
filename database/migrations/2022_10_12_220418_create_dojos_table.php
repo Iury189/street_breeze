@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('dojos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fighter_id')->constrained('fighters');
-            $table->foreignId('master_id')->constrained('masters');
+            $table->foreignId('fighter_id')->constrained('fighters')->onDelete('cascade');
+            $table->foreignId('master_id')->constrained('masters')->onDelete('cascade');
         });
     }
 

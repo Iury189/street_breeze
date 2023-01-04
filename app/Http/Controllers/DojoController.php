@@ -57,6 +57,7 @@ class DojoController extends Controller
             'descricao_log' => $this->logDojo->logCreateDojo(),
             'relacao' => "Dojô ID N°$dojo->id está presente no sistema.",
         ]);
+        $dojo->update($validacoes);
         return redirect('dojo')->with('success-store',"Dojô ID N°$dojo->id está presente no sistema.");
     }
 
