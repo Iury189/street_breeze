@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MasterDeletedEvent;
 use App\Loggings\LogMaster;
+use App\Models\DojoModel;
 use App\Models\MasterModel;
 use App\Models\LoggingModel;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -113,6 +116,10 @@ class MasterController extends Controller
             'descricao_log' => $this->logMaster->logDeleteMaster(),
             'relacao' => "Master $nome não está mais presente no sistema.",
         ]);
+        $dojo = DojoModel::where('master_id',$id)->first();
+        if ($dojo != null && $dojo->count() > 0) {
+            Event::dispatch(new MasterDeletedEvent($id));
+        }
         MasterModel::where('id',$id)->delete();
         return redirect('master')->with('success-destroy',"$nome não está mais presente no sistema.");
     }

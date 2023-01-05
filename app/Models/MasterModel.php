@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Events\MasterDeletedEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\Genero;
 
 class MasterModel extends Model
 {
@@ -22,4 +22,13 @@ class MasterModel extends Model
         'peso',
         'passaporte',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($master) {
+            event(new MasterDeletedEvent($master->id));
+        });
+    }
 }

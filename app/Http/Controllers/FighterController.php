@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\FighterDeletedEvent;
 use App\Loggings\LogFighter;
+use App\Models\DojoModel;
 use App\Models\FighterModel;
 use App\Models\LoggingModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\FighterRequest;
@@ -113,6 +116,10 @@ class FighterController extends Controller
             'descricao_log' => $this->logFighter->logDeleteFighter(),
             'relacao' => "Fighter $nome não está mais presente no sistema.",
         ]);
+        $dojo = DojoModel::where('fighter_id',$id)->first();
+        if ($dojo != null && $dojo->count() > 0) {
+            Event::dispatch(new FighterDeletedEvent($id));
+        }
         FighterModel::where('id',$id)->delete();
         return redirect('fighter')->with('success-destroy',"$nome não está mais presente no sistema.");
     }

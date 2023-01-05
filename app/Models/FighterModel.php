@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Events\FighterDeletedEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\Genero;
 
 class FighterModel extends Model
 {
@@ -22,4 +22,13 @@ class FighterModel extends Model
         'peso',
         'passaporte',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($fighter) {
+            event(new FighterDeletedEvent($fighter->id));
+        });
+    }
 }
