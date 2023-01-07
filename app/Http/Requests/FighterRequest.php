@@ -3,9 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
-use App\Rules\PassportNumberRule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\PassportNumberRule;
+use App\Rules\StreetFighterURLRule;
 
 class FighterRequest extends FormRequest
 {
@@ -42,6 +43,9 @@ class FighterRequest extends FormRequest
             Rule::unique('fighters','passaporte')->ignore($this->id),
             Rule::unique('masters','passaporte')->ignore($this->id),
             new PassportNumberRule],
+            'url_sf' => [new StreetFighterURLRule,
+            Rule::unique('fighters','url_sf')->ignore($this->id),
+            Rule::unique('masters','url_sf')->ignore($this->id)],
         ];
     }
     // Mensagens personalizadas
@@ -72,6 +76,7 @@ class FighterRequest extends FormRequest
             'passaporte.required' => 'É obrigatório definir o passaporte do Fighter.',
             'passaporte.size' => 'O número de passaporte do Fighter deve conter 8 caracteres.',
             'passaporte.unique' => 'Esse número de passaporte já está registrado, não é aceito valores repetidos de passaporte.',
+            'url_sf.unique' => 'URL já existente, não é aceito repetições.'
         ];
     }
 }

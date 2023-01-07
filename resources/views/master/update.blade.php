@@ -93,6 +93,11 @@
                         </div>
                         <br>
                         <div>
+                            <x-input-label for="url_sf" :value="__('URL Street Fighter:')" />
+                            <x-text-input id="url_sf" class="block mt-1 w-full" type="url" name="url_sf" value="{{ $master->url_sf }}" autofocus placeholder="Formato permitidos: https://www.street-fighter.com/ ou https://street-fighter.com/"/>
+                        </div>
+                        <br>
+                        <div>
                             <x-primary-button class="ml-3"><i class="fa fa-arrows-rotate"></i>&nbsp; {{ __('Atualizar') }} </x-primary-button>
                         </div>
                     </form>

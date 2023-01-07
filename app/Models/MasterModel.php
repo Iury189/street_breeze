@@ -21,6 +21,7 @@ class MasterModel extends Model
         'altura',
         'peso',
         'passaporte',
+        'url_sf',
     ];
 
     protected static function boot()
