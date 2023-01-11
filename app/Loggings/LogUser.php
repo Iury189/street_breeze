@@ -41,4 +41,15 @@ class LogUser {
         Log::channel('logUpdatePassword')->info($mensagem);
         return $mensagem;
     }
+
+    public function logUpdateEmail()
+    {
+        $data = Carbon::now()->format('d/m/Y H:i:s');
+        $nome_user = Auth::user()->name;
+        $tipo_user = Auth::user()->role;
+        $ip_user = Request::ip();
+        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user alterou seu e-mail utilizando IP $ip_user em $data." : "Usuário(a) $nome_user alterou seu e-mail utilizando IP $ip_user em $data.";
+        Log::channel('logUpdateEmail')->info($mensagem);
+        return $mensagem;
+    }
 }

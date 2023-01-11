@@ -62,7 +62,11 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="url('change_password')">
-                        <i class="fa fa-gear"></i>&nbsp;{{ __('Change Password') }}
+                            <i class="fa fa-key"></i>&nbsp;{{ __('Change Password') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="url('change_email')">
+                            <i class="fa fa-at"></i>&nbsp;{{ __('Change E-mail') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

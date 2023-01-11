@@ -30,8 +30,13 @@ Route::get('/change_password', function () {
     return view('change_password');
 })->middleware(['auth'])->name('change_password');
 
+Route::get('/change_email', function () {
+    return view('change_email');
+})->middleware(['auth'])->name('change_email');
+
 Route::controller(ChangePasswordController::class)->group(function(){
     Route::post('/update-password', 'updatePassword');
+    Route::post('/update-email', 'updateEmail');
 });
 
 Route::controller(FighterController::class)->group(function() {

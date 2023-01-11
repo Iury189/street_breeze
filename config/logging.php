@@ -81,6 +81,12 @@ return [
             'level' => 'debug',
         ],
         // Log personalizado
+        'logUpdateEmail' => [
+            'driver' => 'single',
+            // 'path' => storage_path('logs/logLogout.log'),
+            'level' => 'debug',
+        ],
+        // Log personalizado
         'logCreateFighter' => [
             'driver' => 'single',
             // 'path' => storage_path('logs/logCreateFighter.log'),

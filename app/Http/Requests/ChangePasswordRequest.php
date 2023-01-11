@@ -43,5 +43,4 @@ class ChangePasswordRequest extends FormRequest
             'confirm_new_password.same' => 'Os campos de "Nova senha" e "Confirmar nova senha" devem ser iguais.',
         ];
     }
-
 }

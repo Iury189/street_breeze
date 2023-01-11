@@ -1,17 +1,17 @@
-@section('title') {{'Change Password'}} @endsection
+@section('title') {{'Change e-mail'}} @endsection
 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             @if (Auth::user()->role == 0)
-                {{ __('Alterar senha de ')}} {{ Str::words(Auth::user()->name, 1, '') }} (User).
+                {{ __('Alterar e-mail de ')}} {{ Str::words(Auth::user()->name, 1, '') }} (User).
             @else
-                {{ __('Alterar senha de ')}} {{ Str::words(Auth::user()->name, 1, '') }} (Administrador).
+                {{ __('Alterar e-mail de ')}} {{ Str::words(Auth::user()->name, 1, '') }} (Administrador).
             @endif
         </h2>
     </h2>
-        @if (Session::has('success-update-password'))
-            <x-success-store class="mb-4" :status="session('success-update-password')" />
+        @if (Session::has('success-update-email'))
+            <x-success-store class="mb-4" :status="session('success-update-email')" />
         @endif
     </x-slot>
     <div class="py-12">
@@ -26,21 +26,16 @@
                     <br>
                     <!-- Validation Errors -->
                     <x-validation-errors class="mb-4" :errors="$errors" />
-                    <form action="{{ url("update-password") }}" method="POST">
+                    <form action="{{ url("update-email") }}" method="POST">
                         @csrf
                         <div>
-                            <x-input-label for="current_password" :value="__('Senha atual:')" />
-                            <x-text-input id="current_password" class="block mt-1 w-full" type="password" name="current_password" autofocus />
+                            <x-input-label for="current_email" :value="__('E-mail atual:')" />
+                            <x-text-input id="current_email" class="block mt-1 w-full" type="email" name="current_email" autofocus value="{{ Auth::user()->email}}"/>
                         </div>
                         <br>
                         <div>
-                            <x-input-label for="new_password" :value="__('Nova senha:')" />
-                            <x-text-input id="new_password" class="block mt-1 w-full" type="password" name="new_password" autofocus />
-                        </div>
-                        <br>
-                        <div>
-                            <x-input-label for="confirm_new_password" :value="__('Confirmar nova senha:')" />
-                            <x-text-input id="confirm_new_password" class="block mt-1 w-full" type="password" name="confirm_new_password" autofocus />
+                            <x-input-label for="new_email" :value="__('Novo e-mail:')" />
+                            <x-text-input id="new_email" class="block mt-1 w-full" type="email" name="new_email" autofocus />
                         </div>
                         <br>
                         <div>
