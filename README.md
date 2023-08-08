@@ -1,64 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://laravel.com/docs/10.x/starter-kits#laravel-breeze">
+        <img src="https://github.com/laravel/breeze/blob/1.x/art/logo.svg" alt="Laravel Breeze Logo">
+    </a>
 </p>
 
-## About Laravel
+<p align="center">
+    <a href="https://packagist.org/packages/laravel/breeze">
+        <img src="https://img.shields.io/packagist/dt/laravel/breeze" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/laravel/breeze">
+        <img src="https://img.shields.io/packagist/v/laravel/breeze" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/laravel/breeze">
+        <img src="https://img.shields.io/packagist/l/laravel/breeze" alt="License">
+    </a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Attention!
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Execute those commands to install dependencies, create `.env` file and create `APP_KEY` (Application key) int the same file.
 
-## Learning Laravel
+```
+composer install 
+cp .env.example .env 
+php artisan cache:clear 
+composer dump-autoload 
+php artisan key:generate
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+When execute the migrations, is necessary use the commands to create some populated tables to some selection fields at forms.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+php artisan migrate --seed
+```
 
-## Laravel Sponsors
+Or using the commands:
+```
+php artisan migrate
+php artisan db:seed
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+With help of [Laravel Spatie](https://spatie.be/docs/laravel-permission/v5/introduction), exist two roles user: **Admin** e **User**. Making certains roles user has more privileges than others, is very important you execute the seeds to those users be created.
 
-### Premium Partners
+* Name: Mario
+```
+Email: mario@world.com
+Password: 12345678
+Roles: Admin, User
+Permissions: NULL
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+* Name: Luigi
+```
+Email: luigi@world.com
+Password: 12345678
+Roles: User
+Permissions: NULL
+```
 
-## Contributing
+Some functionality are exclusives to **Admin**, others types of roles has not the same privileges.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Read more on [Laravel Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze).
 
-## Code of Conduct
+## Login
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Login.png?raw=true)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Register
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Register.png?raw=true)
 
-## Security Vulnerabilities
+## Forgot Password
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/ForgotPassword.png?raw=true)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Email Notification
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/EmailNotification.png?raw=true)
 
-## License
+## Password Reset
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/PasswordReset.png?raw=true)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Dashboard
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Dashboard.png?raw=true)
+
+## Fighter
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Fighter.png?raw=true)
+
+## Master
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Master.png?raw=true)
+
+## Dojo
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Dojo.png?raw=true)
+
+## Fight
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Fight.png?raw=true)
+
+## Permissions
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Permissions.png?raw=true)
+
+## Trash of permissions
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/TrashPermission.png?raw=true)
+
+## Roles
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Roles.png?raw=true)
+
+## Trash of roles
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/TrashRole.png?raw=true)
+
+## Users
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/Users.png?raw=true)
+
+## Trash of users
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/TrashUser.png?raw=true)
+
+## Change password
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/ChangePassword.png?raw=true)
+
+## Change email
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/ChangeEmail.png?raw=true)
+
+## Delete user (Permanently)
+![](https://github.com/Iury189/street_breeze/blob/main/public/imagens/DeleteUser.png?raw=true)

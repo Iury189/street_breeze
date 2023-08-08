@@ -5,7 +5,10 @@ namespace App\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
+use App\Events\FighterDeletedEvent;
+use App\Events\MasterDeletedEvent;
+use App\Listeners\FighterDeletedEventListener;
+use App\Listeners\MasterDeletedEventListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -17,6 +20,15 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        FighterDeletedEvent::class => [
+            FighterDeletedEventListener::class,
+        ],
+        MasterDeletedEvent::class => [
+            MasterDeletedEventListener::class,
+        ],
+        'Illuminate\Auth\Events\Logout' => [
+            'App\Listeners\LogExpiredSession',
         ],
     ];
 

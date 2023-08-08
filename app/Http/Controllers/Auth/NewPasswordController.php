@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Rules\NoSpacesPasswordRule;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -35,8 +36,16 @@ class NewPasswordController extends Controller
     {
         $request->validate([
             'token' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'email', 'max:255'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults(), new NoSpacesPasswordRule],
+        ],
+        [
+            'email.required' => 'O e-mail do usuário é obrigatório.',
+            'email.email' => 'O e-mail do usuário deve conter um endereço válido.',
+            'email.max' => 'O e-mail do usuário deve conter no máximo 255 caracteres.',
+            'password.required' => 'A senha do usuário é obrigatória.',
+            'password.confirmed' => 'A nova senha e a confirmação da nova senha não coincidem.',
+            'password.min' => 'A senha deve conter no mínimo 8 caracteres.',
         ]);
 
         // Here we will attempt to reset the user's password. If it is successful we
@@ -60,6 +69,6 @@ class NewPasswordController extends Controller
         return $status == Password::PASSWORD_RESET
                     ? redirect()->route('login')->with('status', __($status))
                     : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);
+                    ->withErrors(['email' => __($status)]);
     }
 }

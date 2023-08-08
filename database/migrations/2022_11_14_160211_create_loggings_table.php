@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fighter', function (Blueprint $table) {
+        Schema::create('loggings', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 30);
-            $table->string('arte_marcial', 50);
-            $table->string('nacionalidade', 30);
-            $table->enum('genero', ['Masculino', 'Feminino']);
-            $table->decimal('altura', 3,2);
-            $table->decimal('peso', 5,2);
+            $table->longText('descricao_log');
+            $table->longText('relacao')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fighter');
+        Schema::dropIfExists('loggings');
     }
 };

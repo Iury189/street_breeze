@@ -90,8 +90,8 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'expire' => 60, // Tempo de expiração do token de redefinição de senha, que é medido em minutos. O padrão é 60 minutos.
+            'throttle' => 60, // Quantidade de tentativas de redefinição de senha que um usuário pode fazer em determinado período de tempo.
         ],
     ],
 

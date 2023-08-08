@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\LoggingModel;
+use Illuminate\Http\Request;
+use App\Loggings\LogUser;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthenticatedSessionController extends Controller
 {
+    public function __construct()
+    {
+        $this->logUser = new LogUser();
+        $this->logModel = new LoggingModel();
+    }
+
     /**
      * Display the login view.
      *
@@ -29,10 +37,13 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $this->logModel->create([
+            'descricao_log' => $this->logUser->logLogin(),
+            'relacao' => '',
+        ]);
+        //return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect('/dashboard');
     }
 
     /**
@@ -43,12 +54,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        $this->logModel->create([
+            'descricao_log' => $this->logUser->logLogout(),
+            'relacao' => '',
+        ]);
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }

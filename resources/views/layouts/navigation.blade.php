@@ -17,8 +17,38 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="url('index')" :active="request()->routeIs('index')">
+                    <x-nav-link :href="url('fighter')" :active="request()->routeIs('fighter')">
                         {{ __('Fighters') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="url('master')" :active="request()->routeIs('master')">
+                        {{ __('Masters') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="url('dojo')" :active="request()->routeIs('dojo')">
+                        {{ __('Dojôs') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="url('fight')" :active="request()->routeIs('fight')">
+                        {{ __('Luta') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="url('role')" :active="request()->routeIs('role')">
+                        {{ __('Papel') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="url('permission')" :active="request()->routeIs('permission')">
+                        {{ __('Permissão') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="url('user')" :active="request()->routeIs('user')">
+                        {{ __('Usuário') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -28,8 +58,9 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
-
+                            <div>
+                                <i class="fa-solid fa-user"></i>&nbsp; {{ Str::words(Auth::user()->name, 1, '') }}
+                            </div>
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -39,14 +70,23 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="url('change_password')">
+                            <i class="fa fa-key"></i>&nbsp;{{ __('Change password') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="url('change_email')">
+                            <i class="fa fa-at"></i>&nbsp;{{ __('Change e-mail') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="url('delete_user')">
+                            <i class="fa fa-user-slash"></i></i>&nbsp;{{ __('Delete user') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            <i class="fa fa-right-from-bracket"></i>&nbsp;{{ __('Log out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -84,7 +124,6 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">

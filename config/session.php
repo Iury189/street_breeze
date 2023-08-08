@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'encrypt' => false,
+    'encrypt' => true, // Aumenta segurança criptografando dados da sessão antes de serem armazenados, os dados são decifrados mediante chave de decriptação
 
     /*
     |--------------------------------------------------------------------------

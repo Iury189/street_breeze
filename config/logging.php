@@ -63,6 +63,120 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
+        'logLogin' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logLogin.log'),
+            'level' => 'debug',
+        ],
+
+        'logLogout' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logLogout.log'),
+            'level' => 'debug',
+        ],
+
+        'logUpdatePassword' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logUpdatePassword.log'),
+            'level' => 'debug',
+        ],
+
+        'logUpdateEmail' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logUpdateEmail.log'),
+            'level' => 'debug',
+        ],
+
+        'logCreateFighter' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logCreateFighter.log'),
+            'level' => 'debug',
+        ],
+
+        'logUpdateFighter' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logUpdateFighter.log'),
+            'level' => 'debug',
+        ],
+
+        'logDeleteFighter' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logDeleteFighter.log'),
+            'level' => 'debug',
+        ],
+
+        'logCreateMaster' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logCreateMaster.log'),
+            'level' => 'debug',
+        ],
+
+        'logUpdateMaster' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logUpdateMaster.log'),
+            'level' => 'debug',
+        ],
+
+        'logDeleteMaster' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logDeleteMaster.log'),
+            'level' => 'debug',
+        ],
+
+        'logCreateDojo' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logCreateDojo.log'),
+            'level' => 'debug',
+        ],
+
+        'logUpdateDojo' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logUpdateDojo.log'),
+            'level' => 'debug',
+        ],
+
+        'logDeleteDojo' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logDeleteDojo.log'),
+            'level' => 'debug',
+        ],
+
+        'logRegisterUser' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logRegisterUser.log'),
+            'level' => 'debug',
+        ],
+
+        'logCreateFight' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logCreateFight.log'),
+            'level' => 'debug',
+        ],
+
+        'logDeleteFight' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logDeleteFight.log'),
+            'level' => 'debug',
+        ],
+
+        'logDeleteUser' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logDeleteUser.log'),
+            'level' => 'debug',
+        ],
+
+        'logGitHubLogin' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logGitHubLogin.log'),
+            'level' => 'debug',
+        ],
+
+        'logGoogleLogin' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logGoogleLogin.log'),
+            'level' => 'debug',
+        ],
+
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),
