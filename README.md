@@ -42,6 +42,20 @@ php artisan migrate
 php artisan db:seed
 ```
 
+Execute this command to install Vite.
+```
+npm install
+```
+
+Now you need run the Vite.
+```
+# Run the Vite development server...
+npm run dev
+ 
+# Build and version the assets for production...
+npm run build
+```
+
 With help of [Laravel Spatie](https://spatie.be/docs/laravel-permission/v5/introduction), exist two roles user: **Admin** e **User**. Making certains roles user has more privileges than others, is very important you execute the seeds to those users be created.
 
 * Name: Mario

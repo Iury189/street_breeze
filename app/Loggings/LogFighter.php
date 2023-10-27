@@ -13,9 +13,8 @@ class LogFighter {
     {
         $data = Carbon::now()->format('d/m/Y H:i:s');
         $nome_user = Auth::user()->name;
-        $tipo_user = Auth::user()->role;
         $ip_user = Request::ip();
-        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user cadastrou um Fighter utilizando IP $ip_user em $data." : "Usuário(a) $nome_user cadastrou um Fighter utilizando IP $ip_user em $data.";
+        $mensagem = "$nome_user cadastrou um Fighter utilizando IP $ip_user em $data.";
         Log::channel('logCreateFighter')->notice($mensagem);
         return $mensagem;
     }
@@ -24,9 +23,8 @@ class LogFighter {
     {
         $data = Carbon::now()->format('d/m/Y H:i:s');
         $nome_user = Auth::user()->name;
-        $tipo_user = Auth::user()->role;
         $ip_user = Request::ip();
-        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user atualizou um Fighter utilizando IP $ip_user em $data." : "Usuário(a) $nome_user atualizou um Fighter utilizando IP $ip_user em $data.";
+        $mensagem = "$nome_user atualizou um Fighter utilizando IP $ip_user em $data.";
         Log::channel('logUpdateFighter')->notice($mensagem);
         return $mensagem;
     }
@@ -35,11 +33,10 @@ class LogFighter {
     {
         $data = Carbon::now()->format('d/m/Y H:i:s');
         $nome_user = Auth::user()->name;
-        $tipo_user = Auth::user()->role;
         $ip_user = Request::ip();
-        $mensagem = $tipo_user === 1 ? "Administrador(a) $nome_user deletou um Fighter utilizando IP $ip_user em $data." : "Usuário(a) $nome_user deletou um Fighter utilizando IP $ip_user em $data.";
+        $mensagem = "$nome_user deletou um Fighter utilizando IP $ip_user em $data.";
         Log::channel('logDeleteFighter')->notice($mensagem);
         return $mensagem;
     }
-    
+
 }
